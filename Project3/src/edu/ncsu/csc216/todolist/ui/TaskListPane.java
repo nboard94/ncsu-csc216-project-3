@@ -1,12 +1,14 @@
 package edu.ncsu.csc216.todolist.ui;
 
+import java.awt.Component;
 import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JTable;
 
 import edu.ncsu.csc216.todolist.model.TaskList;
 
-public class TaskListPane {
+public class TaskListPane extends Component implements Observer {
 
 	private static final long serialVersionUID = 0;
 	private TaskList tasks;
