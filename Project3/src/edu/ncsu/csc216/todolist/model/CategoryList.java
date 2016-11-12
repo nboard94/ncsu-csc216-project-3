@@ -4,7 +4,7 @@ import java.util.Observable;
 
 import edu.ncsu.csc216.todolist.util.ArrayList;
 
-public class CategoryList implements Tabular {
+public class CategoryList extends Observable implements Tabular {
 
 	private static final long serialVersionUID = 0;
 	private String name;
@@ -25,6 +25,10 @@ public class CategoryList implements Tabular {
 	
 	public Category getCategoryAt(int i) {
 		return null;
+	}
+	
+	public int indexOf(String s) {
+		return 0;
 	}
 	
 	public int indexOfName(String s) {

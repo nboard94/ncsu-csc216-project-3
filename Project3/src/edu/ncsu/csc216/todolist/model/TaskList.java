@@ -5,7 +5,7 @@ import java.util.Observable;
 
 import edu.ncsu.csc216.todolist.util.LinkedList;
 
-public class TaskList implements Tabular {
+public class TaskList extends Observable implements Tabular {
 
 	private static final long serialVersionUID = 0;
 	private String name;
