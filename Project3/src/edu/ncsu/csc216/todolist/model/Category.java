@@ -1,6 +1,8 @@
 package edu.ncsu.csc216.todolist.model;
 
-public class Category {
+import java.util.Observable;
+
+public class Category extends Observable {
 
 	private static final long serialVersionUID = 0;
 	private String name;

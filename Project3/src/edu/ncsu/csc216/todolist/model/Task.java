@@ -1,8 +1,9 @@
 package edu.ncsu.csc216.todolist.model;
 
 import java.util.Date;
+import java.util.Observable;
 
-public class Task {
+public class Task extends Observable {
 
 	private static final long serialVersionUID = 0;
 	private String title;
