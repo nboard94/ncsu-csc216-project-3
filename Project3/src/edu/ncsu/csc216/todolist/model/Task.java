@@ -1,11 +1,12 @@
 package edu.ncsu.csc216.todolist.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Observable;
 
-public class Task extends Observable {
+public class Task extends Observable implements Serializable {
 
-	private static final long serialVersionUID = 0;
+	private static final long serialVersionUID = 7459L;
 	private String title;
 	private String details;
 	private Date startDateTime;

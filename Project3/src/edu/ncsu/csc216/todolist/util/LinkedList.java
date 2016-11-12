@@ -1,8 +1,10 @@
 package edu.ncsu.csc216.todolist.util;
 
-public class LinkedList  implements List{
+import java.io.Serializable;
 
-	private static final long serialVersionUID = 0;
+public class LinkedList  implements List, Serializable {
+
+	private static final long serialVersionUID = 349987L;
 	private Node head;
 	
 	public LinkedList() {

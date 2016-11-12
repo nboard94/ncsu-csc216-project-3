@@ -1,8 +1,10 @@
 package edu.ncsu.csc216.todolist.ui;
 
-public class TaskTableModel {
+import java.io.Serializable;
 
-	private static final long serialVersionUID = 0;
+public class TaskTableModel implements Serializable {
+
+	private static final long serialVersionUID = 5954551753060998701L;
 	private String[] colNames;
 	private Object[][] data;
 	

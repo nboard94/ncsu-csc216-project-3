@@ -1,10 +1,11 @@
 package edu.ncsu.csc216.todolist.model;
 
+import java.io.Serializable;
 import java.util.Observable;
 
-public class Category extends Observable {
+public class Category extends Observable implements Serializable {
 
-	private static final long serialVersionUID = 0;
+	private static final long serialVersionUID = 459188L;
 	private String name;
 	private String description;
 	private String categoryID;

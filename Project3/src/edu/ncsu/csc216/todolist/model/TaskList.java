@@ -1,13 +1,14 @@
 package edu.ncsu.csc216.todolist.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Observable;
 
 import edu.ncsu.csc216.todolist.util.LinkedList;
 
-public class TaskList extends Observable implements Tabular {
+public class TaskList extends Observable implements Tabular, Serializable {
 
-	private static final long serialVersionUID = 0;
+	private static final long serialVersionUID = 98734509L;
 	private String name;
 	private int nextTaskNum;
 	private String taskListID;

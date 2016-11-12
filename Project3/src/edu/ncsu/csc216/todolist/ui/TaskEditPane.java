@@ -1,6 +1,7 @@
 package edu.ncsu.csc216.todolist.ui;
 
 import java.awt.Component;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.EventListener;
 import java.util.Observable;
@@ -14,9 +15,9 @@ import javax.swing.JTextField;
 import edu.ncsu.csc216.todolist.model.Category;
 import edu.ncsu.csc216.todolist.model.CategoryList;
 
-public class TaskEditPane extends Component {
+public class TaskEditPane extends Component implements Serializable {
 	
-	private static final long serialVersionUID = 0;
+	private static final long serialVersionUID = 5479139338455751629L;
 	private CategoryList categories;
 	private JTextField taskID;
 	private JTextField taskTitle;

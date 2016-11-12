@@ -1,12 +1,13 @@
 package edu.ncsu.csc216.todolist.model;
 
+import java.io.Serializable;
 import java.util.Observable;
 
 import edu.ncsu.csc216.todolist.util.ArrayList;
 
-public class CategoryList extends Observable implements Tabular {
+public class CategoryList extends Observable implements Tabular, Serializable {
 
-	private static final long serialVersionUID = 0;
+	private static final long serialVersionUID = 984509L;
 	private String name;
 	private int nextCategoryNum;
 	private ArrayList list;

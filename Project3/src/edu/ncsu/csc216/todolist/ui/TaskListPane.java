@@ -1,6 +1,7 @@
 package edu.ncsu.csc216.todolist.ui;
 
 import java.awt.Component;
+import java.io.Serializable;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -8,9 +9,9 @@ import javax.swing.JTable;
 
 import edu.ncsu.csc216.todolist.model.TaskList;
 
-public class TaskListPane extends Component implements Observer {
+public class TaskListPane extends Component implements Observer, Serializable {
 
-	private static final long serialVersionUID = 0;
+	private static final long serialVersionUID = -2210716111020406799L;
 	private TaskList tasks;
 	private TaskTableModel ttm;
 	private JTable table;
