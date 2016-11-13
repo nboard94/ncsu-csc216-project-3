@@ -4,95 +4,221 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Observable;
 
+/**
+ * The Task class represents a Task object, contains
+ * a Task's state, has associated getters and setters,
+ * and methods for comparison.
+ * @author Nicholas Board and Christian Byrnes
+ */
 public class Task extends Observable implements Serializable {
 
+	/** The Task's serial identification. */
 	private static final long serialVersionUID = 7459L;
+	/** The Task's title. */
 	private String title;
+	/** The Task's details. */
 	private String details;
+	/** The Task's start date and time. */
 	private Date startDateTime;
+	/** The Task's due date and time. */
 	private Date dueDateTime;
+	/** The Task's completion date and time. */
 	private Date completedDateTime;
+	/** The Task's completion state. */
 	private boolean completed;
+	/** The Task's ID. */
 	private String taskID;
+	/** The Task's category. */
 	private Category category;
 	
-	public Task(String s1, String s2, Date d1, Date d2, Category c, String s3) {
-		
+	/**
+	 * Constructor for a Task object.  Calls upon Task's setters to set the new Task's
+	 * title, details, startDateTime, dueDateTime, category, and taskID.
+	 * @param newTitle The new Task's title.
+	 * @param newDetails The new Task's details.
+	 * @param newStartDateTime The new Task's startDateTime.
+	 * @param newDueDateTime The new Task's dueDateTime.
+	 * @param newCategory The new Task's category.
+	 * @param newTaskID The new Task's taskID.
+	 */
+	public Task(String newTitle, String newDetails, Date newStartDateTime, Date newDueDateTime, Category newCategory, String newTaskID) {
+		this.setTitle(newTitle);
+		this.setDetails(newDetails);
+		this.setStartDateTime(newStartDateTime);
+		this.setDueDateTime(newDueDateTime);
+		this.setCategory(newCategory);
+		this.setTaskID(newTaskID);
 	}
 	
+	/**
+	 * Gets the Task's title.
+	 * @return title The Task's title.
+	 */
 	public String getTitle() {
-		return null;
+		return title;
 	}
 	
-	public void setTitle(String s) {
-		
+	/**
+	 * Sets the Task's title.
+	 * @param newTitle The new title to set Task's title to.
+	 * @throws IllegalArgumentException If newTitle is null or an empty string.
+	 */
+	public void setTitle(String newTitle) throws IllegalArgumentException {
+		if (newTitle == null || newTitle.equals("")) {
+			throw new IllegalArgumentException();
+		} else {
+			title = newTitle;
+		}
 	}
 	
+	/**
+	 * Gets the Task's details.
+	 * @return details The Task's details.
+	 */
 	public String getDetails() {
-		return null;
+		return details;
 	}
 	
-	public void setDetails(String s) {
-		
+	/**
+	 * Sets the Task's details.
+	 * @param newDetails The new details to set Task's details to.
+	 * @throws IllegalArgumentException If newDetails is null or an empty string.
+	 */
+	public void setDetails(String newDetails) throws IllegalArgumentException {
+		if (newDetails == null || newDetails.equals("")) {
+			throw new IllegalArgumentException();
+		} else {
+			details = newDetails;
+		}
 	}
 	
+	/**
+	 * Gets the Task's start date and time.
+	 * @return startDateTime The date and time the Task was started on.
+	 */
 	public Date getStartDateTime() {
-		return null;
+		return startDateTime;
 	}
 	
-	public void setStartDateTime(Date d) {
-		
+	/**
+	 * Sets the Task's startDateTime.
+	 * @param newStartDateTime The date to set Task's StartDateTime to.
+	 */
+	public void setStartDateTime(Date newStartDateTime) throws IllegalArgumentException {
+		if (newStartDateTime == null) {
+			throw new IllegalArgumentException();
+		} else {
+			startDateTime = newStartDateTime;
+		}
 	}
 	
+	/**
+	 * Gets the Task's due date and time.
+	 * @return dueDateTime The date and time the Task was due on.
+	 */
 	public Date getDueDateTime() {
-		return null;
+		return dueDateTime;
 	}
 	
-	public void setDueDateTime(Date d) {
+	/**
+	 * Sets the Task's dueDateTime.
+	 * @param newDueDateTime The date to set Task's dueDateTime to.
+	 */
+	public void setDueDateTime(Date newDueDateTime) throws IllegalArgumentException {
+		if (newDueDateTime == null) {
+			throw new IllegalArgumentException();
+		} else {
+			dueDateTime = newDueDateTime;
+		}
 		
 	}
 	
+	/**
+	 * Gets the Task's completion date and time.
+	 * @return completedDateTime The date and time the Task was completed on.
+	 */
 	public Date getCompletedDateTime() {
-		return null;
+		return completedDateTime;
 	}
 	
-	public void setCompletedDateTime(Date d) {
-		
+	/**
+	 * Sets the Task's completedDateTime.
+	 * @param newCompletedDateTime The date to set Task's completedDateTime to.
+	 */
+	public void setCompletedDateTime(Date newCompletedDateTime) {
+		completedDateTime = newCompletedDateTime;
 	}
 	
+	/**
+	 * Gets the Task's completion state.
+	 * @return completed
+	 */
 	public boolean isCompleted() {
-		return false;
+		return completed;
 	}
 	
-	public void setCompleted(boolean b) {
-		
+	/**
+	 * Sets the Task's completion state.
+	 * @param newCompleted The boolean to set Task's completion state to.
+	 */
+	public void setCompleted(boolean newCompleted) {
+		completed = newCompleted;
 	}
 	
+	/**
+	 * Gets the Task's category.
+	 * @return category The Task's category.
+	 */
 	public Category getCategory() {
-		return null;
+		return category;
 	}
 	
-	public void setCategory(Category c) {
-		
+	/**
+	 * Sets the Task's category.
+	 * @param newCategory The category to set the Task's category to.
+	 * @throws IllegalArgumentException If newCategory is null.
+	 */
+	public void setCategory(Category newCategory) throws IllegalArgumentException {
+		if (newCategory == null) {
+			throw new IllegalArgumentException();
+		} else {
+			category = newCategory;
+		}
 	}
 	
+	/**
+	 * Gets the Task's taskID.
+	 * @return taskID The Task's taskID.
+	 */
 	public String getTaskID() {
-		return null;
+		return taskID;
 	}
 	
-	private void setTaskID(String s) {
-		
+	/**
+	 * Sets the Task's taskID.
+	 * @param newTaskID The string to set taskID to.
+	 * @throws IllegalArgumentException If newTaskID is null or an empty string.
+	 */
+	private void setTaskID(String newTaskID) throws IllegalArgumentException {
+		if (newTaskID == null || newTaskID.equals("")) {
+			throw new IllegalArgumentException();
+		} else {
+			taskID = newTaskID;
+		}
 	}
 	
-	public boolean equals(Object o) {
+	//TODO
+	public boolean equals(Object otherTask) {
 		return false;
 	}
 	
+	//TODO
 	public int hashCode() {
 		return 0;
 	}
 	
-	public int compareTo(Task t) {
+	//TODO
+	public int compareTo(Task otherTask) {
 		return 0;
 	}
 }
