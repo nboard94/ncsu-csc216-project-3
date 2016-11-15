@@ -9,6 +9,10 @@ import java.util.Observable;
  * and methods for comparison.
  * @author Nicholas Board and Christian Byrnes
  */
+/**
+ * @author NBoar
+ *
+ */
 public class Category extends Observable implements Serializable {
 
 	/** The Category's serial identification. */
@@ -47,7 +51,7 @@ public class Category extends Observable implements Serializable {
 	 * @throws IllegalArgumentException If newName is null or an empty string.
 	 */
 	public void setName(String newName) throws IllegalArgumentException {
-		if (newName == null || newName.equals(newName)) {
+		if (newName == null || newName.equals("")) {
 			throw new IllegalArgumentException();
 		} else {
 			name = newName;
@@ -91,23 +95,42 @@ public class Category extends Observable implements Serializable {
 		}
 	}
 	
-	//TODO
-	public boolean equals(Object o) {
-		return false;
-	}
-	
-	//TODO
+	/**
+	 * Compares two Category objects based on their ID.
+	 * Delegates to String's compareTo() methods.
+	 * @param c The Category to compare to this Category.
+	 * @return 0 if the same, -1 if this Category comes first, 1 if the arg Category is first.
+	 */
 	public int compareTo(Category c) {
-		return 0;
+		return this.getCategoryID().compareTo(c.getCategoryID());
 	}
 	
-	//TODO
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (!categoryID.equals(((Category) obj).getCategoryID())) {
+			return false;
+		}
+		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
 	public int hashCode() {
-		return 0;
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((categoryID == null) ? 0 : categoryID.hashCode());
+		return result;
 	}
 	
-	//TODO
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString() {
-		return null;
+		return this.getCategoryID() + ", " + this.getName() + ", " + this.getDescription();
 	}
 }
