@@ -9,13 +9,13 @@ import java.io.Serializable;
  */
 public class ArrayList implements List, Serializable {
 	
-	/** TheArrayList's serial identification. */
+	/** The ArrayList's serial identification. */
 	private static final long serialVersionUID = 28592L;
-	/** TheArrayList's RESIZE value. */
+	/** The ArrayList's RESIZE value. */
 	private static final int RESIZE = 2;
-	/** TheArrayList's internal list. */
+	/** The ArrayList's internal list. */
 	private Object[] list;
-	/** TheArrayList's size. */
+	/** The ArrayList's size. */
 	private int size;
 	
 	/**

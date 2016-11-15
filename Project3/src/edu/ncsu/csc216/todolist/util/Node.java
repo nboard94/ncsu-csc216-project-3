@@ -14,9 +14,13 @@ public class Node implements Serializable {
 	private static final long serialVersionUID = 484909840L;
 	/** The Node's value. */
 	Object value;
-	/** The next Node. */
+	/** The next Node in the LinkedList. */
 	private Node next;
 	
+	/**
+	 * @param newValue The value for the new Node.
+	 * @param newNext The next Node in the LinkedList.
+	 */
 	public Node (Object newValue, Node newNext) {
 		value = newValue;
 		next = newNext;
