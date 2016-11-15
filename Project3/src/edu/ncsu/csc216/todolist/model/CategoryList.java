@@ -16,7 +16,7 @@ public class CategoryList extends Observable implements Tabular, Serializable {
 		
 	}
 	
-	public String getName() {
+	public String getName() { 
 		return null;
 	}
 	
