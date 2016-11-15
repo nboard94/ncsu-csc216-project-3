@@ -24,7 +24,7 @@ public class CategoryList extends Observable implements Tabular, Serializable {
 		return false;
 	}
 	
-	public Category getCategoryAt(int i) {
+	public Category getCategoryAt(int i) { 
 		return null;
 	}
 	
