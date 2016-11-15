@@ -9,10 +9,6 @@ import java.util.Observable;
  * and methods for comparison.
  * @author Nicholas Board and Christian Byrnes
  */
-/**
- * @author NBoar
- *
- */
 public class Category extends Observable implements Serializable {
 
 	/** The Category's serial identification. */
