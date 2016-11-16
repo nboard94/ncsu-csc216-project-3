@@ -23,10 +23,15 @@ public class TaskEditPane extends Component implements Serializable {
 	
 	/** Serial version UID */
 	private static final long serialVersionUID = 5479139338455751629L;
+	/** The categories that tasks can be in */
 	private CategoryList categories;
+	/** Text field for taskID */
 	private JTextField taskID;
+	/** Text field for taskTitle */
 	private JTextField taskTitle;
+	/** Combo box for task's category */
 	private JComboBox<Category> taskCat;
+	/** Text area for task details */
 	private JTextArea taskDetails;
 	private JSpinner taskStart;
 	private JSpinner taskDue;
@@ -37,12 +42,18 @@ public class TaskEditPane extends Component implements Serializable {
 	private TaskData data;
 	
 	/**
-	 * @param c
+	 * Constructor for a task edit panel.
+	 * @param c CategoryList used to populate the pane
 	 */
 	public TaskEditPane(CategoryList c) {
 		
 	}
 	
+	/**
+	 * Constructor fora task edit panel.
+	 * @param t TaskData used the populate the pane
+	 * @param c CategoryList used to populate the pane
+	 */
 	public TaskEditPane(TaskData t, CategoryList c) {
 		
 	}
@@ -264,7 +275,14 @@ public class TaskEditPane extends Component implements Serializable {
 		return null;
 	}
 	
-	public void update(Observable o1, Object o2) {
+	/**
+	 * This method is called by the observed object, whenever the observed object
+	 * is changed.  In this case, the observed object is the TaskPane. Any changes 
+	 * to the TaskPane will lead to an update of the TaskTableModel.
+	 * @param o the observable object
+	 * @param arg any additional information needed about the change.
+	 */
+	public void update(Observable o, Object args) {
 		
 	}
 }
