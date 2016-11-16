@@ -33,12 +33,19 @@ public class TaskEditPane extends Component implements Serializable {
 	private JComboBox<Category> taskCat;
 	/** Text area for task details */
 	private JTextArea taskDetails;
+	/** Spinner for start date */
 	private JSpinner taskStart;
+	/** Spinner for due date */
 	private JSpinner taskDue;
+	/** Spinner for completed date */
 	private JSpinner taskCompleted;
+	/** Checkbox for completed */
 	private JCheckBox complete;
+	/** Represents in the add state */
 	private boolean add;
+	/** Represents in the edit state */
 	private boolean edit;
+	/** TaskData data */
 	private TaskData data;
 	
 	/**
