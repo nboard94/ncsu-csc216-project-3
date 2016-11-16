@@ -97,7 +97,7 @@ public class ArrayList implements List, Serializable {
 		}
 		
 		for (int i = size(); i > index; i--) {
-			this.list[i] = this.list[i-1];
+			this.list[i] = this.list[i - 1];
 		}
 		
 		this.list[index] = element;
@@ -169,11 +169,7 @@ public class ArrayList implements List, Serializable {
      */
 	@Override
 	public boolean isEmpty() {
-		if (size > 0) {
-			return false;
-		} else {
-			return true;
-		}
+		return !(size > 0);
 	}
 
 	 /**
@@ -218,7 +214,7 @@ public class ArrayList implements List, Serializable {
 	 * Resizes the Array if it is too small.
 	 */
 	private void resize() {
-		Object[] newList = new Object[size()*RESIZE];
+		Object[] newList = new Object[size() * RESIZE];
 		
 		for (int i = 0; i < size(); i++) {
 			newList[i] = list[i];
