@@ -114,9 +114,8 @@ public class ToDoList extends Observable implements Serializable, Observer {
 		return null;
 	}
 	
-	// ============================== what does this do????
 	/**
-	 * todo: Find out how this adds new task lists?
+	 * Creates and adds a brand new tasklist to the todo list
 	 * @return the index of the newly added tasklist
 	 */
 	public int addTaskList() {

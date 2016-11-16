@@ -4,8 +4,16 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+/**
+ * Tests the Category class
+ * @author Christian Byrnes, Nick Board
+ *
+ */
 public class CategoryTest {
 
+	/**
+	 * Tests the Category constructor
+	 */
 	@Test
 	public void testCategory() {
 		Category c1 = new Category("Name1", "Desc1", "ID1");
@@ -43,6 +51,9 @@ public class CategoryTest {
 		}
 	}
 	
+	/**
+	 * Tests the Category's compareTo() method
+	 */
 	@Test
 	public void testCompareTo() {
 		Category c1 = new Category("Name1", "Desc1", "Apple");
@@ -54,6 +65,9 @@ public class CategoryTest {
 		assertEquals(1, c2.compareTo(c1));
 	}
 	
+	/**
+	 * Tests Category's equals() method
+	 */
 	@Test
 	public void testEquals() {
 		Category c1 = new Category("Name1", "Desc1", "Apple");
@@ -64,6 +78,9 @@ public class CategoryTest {
 		assertFalse(c1.equals(c3));
 	}
 	
+	/**
+	 * Test's Category's hashcode method
+	 */
 	@Test
 	public void testHashCode() {
 		Category c1 = new Category("Name1", "Desc1", "Apple");
@@ -75,6 +92,9 @@ public class CategoryTest {
 		
 	}
 	
+	/**
+	 * Tests Category's toString() method
+	 */
 	@Test
 	public void testToString() {
 		Category c1 = new Category("Name1", "Desc1", "Apple");
