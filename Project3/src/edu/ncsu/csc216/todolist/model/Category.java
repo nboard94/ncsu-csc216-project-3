@@ -101,8 +101,10 @@ public class Category extends Observable implements Serializable {
 		return this.getCategoryID().compareTo(c.getCategoryID());
 	}
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
+	/**
+	 * Checks if this object is equal to the one provided in the parameters
+	 * @param obj the object to compare to this one
+	 * @return True if the object is equal to this one
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -112,8 +114,9 @@ public class Category extends Observable implements Serializable {
 		return true;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
+	/**
+	 * Gets the Category's hashcode
+	 * @return int the hashcode for for this Category
 	 */
 	@Override
 	public int hashCode() {
@@ -123,8 +126,9 @@ public class Category extends Observable implements Serializable {
 		return result;
 	}
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	/**
+	 * Returns this Category represented as a string value
+	 * @return This Category represented as a String value
 	 */
 	public String toString() {
 		return this.getCategoryID() + ", " + this.getName() + ", " + this.getDescription();
