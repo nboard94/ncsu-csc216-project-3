@@ -172,8 +172,9 @@ public class LinkedList  implements List, Serializable {
 	}
 	
 	/**
-	 * @param n
-	 * @return
+	 * Calls itself recursively to count the Nodes and return the LinkedList size.
+	 * @param n The next node in the list.
+	 * @return The size of the LinkedList.
 	 */
 	private int size(Node n) {
 		return 0;
@@ -196,6 +197,7 @@ public class LinkedList  implements List, Serializable {
 		private Node next;
 		
 		/**
+		 * Constructor for a Node object.
 		 * @param newValue The value for the new Node.
 		 * @param newNext The next Node in the LinkedList.
 		 */

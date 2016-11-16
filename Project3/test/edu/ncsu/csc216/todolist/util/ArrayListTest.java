@@ -4,8 +4,15 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+/**
+ * Class to test ArrayList class and it's methods.
+ * @author Nicholas Board and Christian Byrnes
+ */
 public class ArrayListTest {
 
+	/**
+	 * Tests ArrayList's constructor.
+	 */
 	@Test
 	public void testArrayList() {
 		ArrayList l1 = new ArrayList();
@@ -27,6 +34,9 @@ public class ArrayListTest {
 		}
 	}
 	
+	/**
+	 * Tests ArrayList's add method.
+	 */
 	@Test
 	public void testAdd() {
 		ArrayList l1 = new ArrayList();
@@ -48,6 +58,9 @@ public class ArrayListTest {
 	
 	}
 	
+	/**
+	 * Tests ArrayList's add method with int parameter.
+	 */
 	@Test
 	public void testAddIndex() {
 		ArrayList l1 = new ArrayList();
@@ -100,6 +113,9 @@ public class ArrayListTest {
 		assertEquals("Rabi", l1.get(1));
 	}
 	
+	/**
+	 * Tests ArrayList's contains method.
+	 */
 	@Test
 	public void testContains() {
 		ArrayList l1 = new ArrayList();
@@ -114,6 +130,9 @@ public class ArrayListTest {
 		assertFalse(l1.contains("Avagantamous"));
 	}
 	
+	/**
+	 * Tests ArrayList's get method.
+	 */
 	@Test
 	public void testGet() {
 		ArrayList l1 = new ArrayList();
@@ -135,6 +154,9 @@ public class ArrayListTest {
 		}
 	}
 	
+	/**
+	 * Tests ArrayList's indexOf method.
+	 */
 	@Test
 	public void testIndexOf() {
 		ArrayList l1 = new ArrayList();
@@ -147,6 +169,9 @@ public class ArrayListTest {
 		assertEquals(-1, l1.indexOf("Avagantamous"));
 	}
 	
+	/**
+	 * Tests ArrayList's remove method.
+	 */
 	@Test
 	public void testRemove() {
 		ArrayList l1 = new ArrayList();
