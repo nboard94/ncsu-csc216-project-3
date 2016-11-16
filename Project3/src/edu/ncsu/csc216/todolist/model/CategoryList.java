@@ -5,6 +5,11 @@ import java.util.Observable;
 
 import edu.ncsu.csc216.todolist.util.ArrayList;
 
+/**
+ * A CategoryList holds and manages a list of Categories.
+ * @author Christian Byrnes, Nick Board
+ *
+ */
 public class CategoryList extends Observable implements Tabular, Serializable {
 
 	/** The CategoryList's serial identification. */
@@ -84,9 +89,8 @@ public class CategoryList extends Observable implements Tabular, Serializable {
 	public boolean isEmpty() {
 		if (list.size() == 0) {
 			return true;
-		} else {
-			return false;
-		}
+		} 
+		return false;
 	}
 	
 	/**
