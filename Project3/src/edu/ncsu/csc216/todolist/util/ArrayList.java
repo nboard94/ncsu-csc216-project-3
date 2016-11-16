@@ -27,14 +27,15 @@ public class ArrayList implements List, Serializable {
 	}
 	
 	/**
-	 * @param i
+	 * Constructs a new ArrayList given an intial array size
+	 * @param size the initial size of the arraylist
 	 */
-	public ArrayList(int i) throws IllegalArgumentException {
-		if (i < 1) {
+	public ArrayList(int size) throws IllegalArgumentException {
+		if (size < 1) {
 			throw new IllegalArgumentException();
 		}
 		
-		list = new Object[i];
+		list = new Object[size];
 	}
 	
     /**
@@ -49,7 +50,7 @@ public class ArrayList implements List, Serializable {
      * on what elements may be added.
      *
      * @param o element to be appended to this list
-     * @return true (as specified by {@link Collection#add})
+     * @return true if the element is added to the list
      */
 	@Override
 	public boolean add(Object o) {
@@ -75,7 +76,6 @@ public class ArrayList implements List, Serializable {
      * @throws IllegalArgumentException if some property of the specified
      *         element prevents it from being added to this list
      * @throws IndexOutOfBoundsException if the index is out of range
-     *         (index < 0 || index > size())
      */
 	@Override
 	public void add(int index, Object element) throws NullPointerException, IllegalArgumentException, IndexOutOfBoundsException {
@@ -130,7 +130,6 @@ public class ArrayList implements List, Serializable {
      * @param index index of the element to return
      * @return the element at the specified position in this list
      * @throws IndexOutOfBoundsException if the index is out of range
-     *         (index < 0 || index >= size())
      */
 	@Override
 	public Object get(int index) throws IndexOutOfBoundsException {
@@ -186,7 +185,6 @@ public class ArrayList implements List, Serializable {
      * @param index the index of the element to be removed
      * @return the element previously at the specified position
      * @throws IndexOutOfBoundsException if the index is out of range
-     *         (index < 0 || index >= size())
      */
 	@Override
 	public Object remove(int index) throws IndexOutOfBoundsException {
