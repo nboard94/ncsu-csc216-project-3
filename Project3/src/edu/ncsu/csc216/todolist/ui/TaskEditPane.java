@@ -287,7 +287,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * is changed.  In this case, the observed object is the TaskPane. Any changes 
 	 * to the TaskPane will lead to an update of the TaskTableModel.
 	 * @param o the observable object
-	 * @param arg any additional information needed about the change.
+	 * @param args any additional information needed about the change.
 	 */
 	public void update(Observable o, Object args) {
 		
