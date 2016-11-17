@@ -27,10 +27,20 @@ public class Category extends Observable implements Serializable {
 	 * @param newDescription The new Category's description.
 	 * @param newCategoryID The new Category's ID.
 	 */
-	public Category(String newName, String newDescription, String newCategoryID) {
-		this.setName(newName);
+	public Category(String newCategoryID, String newName, String newDescription) {
+		if (newCategoryID == null || newCategoryID.equals("")) {
+			throw new IllegalArgumentException();
+		} else {
+			this.setCategoryID(newCategoryID);
+		}
+		
+		if (newName == null || newName.equals("")) {
+			throw new IllegalArgumentException();
+		} else {
+			this.setName(newName);
+		}
+		
 		this.setDescription(newDescription);
-		this.setCategoryID(newCategoryID);
 	}
 	
 	/**
@@ -101,6 +111,7 @@ public class Category extends Observable implements Serializable {
 		return this.getCategoryID().compareTo(c.getCategoryID());
 	}
 	
+	//TODO, equals and hashcode implemented correctly?  Just based off of categoryID?
 	/**
 	 * Checks if this object is equal to the one provided in the parameters
 	 * @param obj the object to compare to this one
@@ -126,6 +137,7 @@ public class Category extends Observable implements Serializable {
 		return result;
 	}
 	
+	//TODO Couldn't find the format for the string, is this right?
 	/**
 	 * Returns this Category represented as a string value
 	 * @return This Category represented as a String value

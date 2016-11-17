@@ -12,7 +12,7 @@ public class ArrayList implements List, Serializable {
 	/** The ArrayList's serial identification. */
 	private static final long serialVersionUID = 28592L;
 	/** The ArrayList's RESIZE value. */
-	private static final int RESIZE = 2;
+	private static final int RESIZE = 10;
 	/** The ArrayList's internal list. */
 	private Object[] list;
 	/** The ArrayList's size. */
@@ -23,7 +23,7 @@ public class ArrayList implements List, Serializable {
 	 * Sets the list's initial size to 1.
 	 */
 	public ArrayList() {
-		list = new Object[2];
+		list = new Object[RESIZE];
 	}
 	
 	/**
@@ -83,10 +83,9 @@ public class ArrayList implements List, Serializable {
 			throw new NullPointerException();
 		}
 		
-//TODO
-//		if (something) {
-//			throw new IllegalArgumentException();
-//		}
+		if (this.contains(element)) {
+			throw new IllegalArgumentException();
+		}
 			
 		if (index < 0 || index > size()) {
 			throw new IndexOutOfBoundsException();
@@ -214,7 +213,7 @@ public class ArrayList implements List, Serializable {
 	 * Resizes the Array if it is too small.
 	 */
 	private void resize() {
-		Object[] newList = new Object[size() * RESIZE];
+		Object[] newList = new Object[size() + RESIZE];
 		
 		for (int i = 0; i < size(); i++) {
 			newList[i] = list[i];

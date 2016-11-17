@@ -41,10 +41,16 @@ public class CategoryList extends Observable implements Tabular, Serializable {
 	 * Adds a new category to the CategoryList given a name and description
 	 * @param name The name of the new category
 	 * @param desc The new category's description
-	 * @return True if the category is successufully added
+	 * @return True if the category is successfully added
 	 */
-	public boolean addCategory(String name, String desc) {
-		return false;
+	public boolean addCategory(String newName, String newDesc) {
+		try {
+			list.add(new Category("C" + getNextCategoryAt(), newName, newDesc));
+			incNextCategoryNum();
+			return true;
+		} catch(IllegalArgumentException e) {
+			return false;
+		}
 	}
 	
 	/**
@@ -62,6 +68,12 @@ public class CategoryList extends Observable implements Tabular, Serializable {
 	 * @return The index of the category, or -1 if no category exists with that id
 	 */
 	public int indexOf(String id) {
+		for (int i = 0; i < list.size(); i++) {
+			if (this.getCategoryAt(i).getCategoryID().equals(id)) {
+				return i;
+			}
+		}
+		
 		return 0;
 	}
 	
@@ -71,6 +83,12 @@ public class CategoryList extends Observable implements Tabular, Serializable {
 	 * @return The index of the category, or -1 if no category exists with that name
 	 */
 	public int indexOfName(String name) {
+		for (int i = 0; i < list.size(); i++) {
+			if (this.getCategoryAt(i).getName().equals(name)) {
+				return i;
+			}
+		}
+		
 		return 0;
 	}
 	
@@ -79,7 +97,7 @@ public class CategoryList extends Observable implements Tabular, Serializable {
 	 * @return the total number of categories in this CategoryList
 	 */
 	public int size() {
-		return 0;
+		return list.size();
 	}
 	
 	/**
@@ -108,6 +126,13 @@ public class CategoryList extends Observable implements Tabular, Serializable {
 	 * @return true if the category is successfully removed
 	 */
 	public boolean removeCategory(String id) {
+		for (int i = 0; i < list.size(); i++) {
+			if (this.getCategoryAt(i).getCategoryID().equals(id)) {
+				list.remove(i);
+				return true;
+			}
+		}
+		
 		return false;
 	}
 	
@@ -116,14 +141,14 @@ public class CategoryList extends Observable implements Tabular, Serializable {
 	 * @return the next category id number
 	 */
 	private int getNextCategoryAt() {
-		return 0;
+		return nextCategoryNum;
 	}
 	
 	/**
 	 * Increments the next category number
 	 */
 	private void incNextCategoryNum() {
-		
+		nextCategoryNum++;
 	}
 	
 	/**
@@ -131,12 +156,21 @@ public class CategoryList extends Observable implements Tabular, Serializable {
 	 * @return a 2d array of all the categories in this list. Each row is a category, while each column is data from that category
 	 */
 	public Object[][] get2DArray() {
-		return null;
+		Object[][] arr = new Object[list.size()][3];
+		
+		for (int i = 0; i < list.size(); i++) {
+			arr[i][0] = this.getCategoryAt(i).getCategoryID();
+			arr[i][1] = this.getCategoryAt(i).getName();
+			arr[i][2] = this.getCategoryAt(i).getDescription();
+		}
+		
+		return arr;
 	}
 	
+	//TODO
 	/**
 	 * Updates the category list to 
-	 * @param o the Observable object to be accessed //TODO make sure this is okay?
+	 * @param o the Observable object to be accessed
 	 * @param arg The argument to pass to notifyObservers()
 	 */
 	public void update(Observable o, Object arg) {
