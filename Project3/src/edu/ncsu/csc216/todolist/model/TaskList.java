@@ -28,9 +28,20 @@ public class TaskList extends Observable implements Tabular, Serializable {
 	 * Creates a new TaskList given 
 	 * @param name the name of this tasklist
 	 * @param taskListID this tasklist's new ID
+	 * @throws IllegalArgumentException if the name or id are null or empty
 	 */
 	public TaskList(String name, String taskListID) {
+		//check for rotten apples
+		if (name == null || taskListID == null ||
+				name.trim().equals("") || taskListID.trim().equals("")) throw new IllegalArgumentException();
 		
+		//plant the strings!
+		setName(name);
+		setTaskListID(taskListID);
+		
+		//initialize the nextTaskNum and list
+		nextTaskNum = 1;
+		list = new LinkedList();
 	}
 	
 	/**
@@ -38,15 +49,17 @@ public class TaskList extends Observable implements Tabular, Serializable {
 	 * @return This tasklist's name 
 	 */
 	public String getName() {
-		return null;
+		return name;
 	}
 	
 	/**
 	 * Sets the name of this tasklist to the given parameter
 	 * @param name the new name to assign to this tasklist
+	 * @throws IllegalArgumentException if the name is null or empty
 	 */
 	public void setName(String name) {
-		
+		if (name == null || name.trim().equals("")) throw new IllegalArgumentException();
+		this.name = name;
 	}
 	
 	/**
@@ -54,7 +67,7 @@ public class TaskList extends Observable implements Tabular, Serializable {
 	 * @return The ID of this tasklist
 	 */
 	public String getTaskListID() {
-		return null;
+		return taskListID;
 	}
 	
 	/**
@@ -62,7 +75,7 @@ public class TaskList extends Observable implements Tabular, Serializable {
 	 * @param taskListID the new ID for this tasklist
 	 */
 	private void setTaskListID(String taskListID) {
-		
+		this.taskListID = taskListID;
 	}
 	
 	/**
@@ -70,14 +83,14 @@ public class TaskList extends Observable implements Tabular, Serializable {
 	 * @return the next ID number for this list, to be assigned to the next task added
 	 */
 	private int getNextTaskNum() {
-		return 0;
+		return nextTaskNum;
 	}
 	
 	/**
 	 * Increments the task list number for this list
 	 */
 	private void incNextTaskNum() {
-		
+		nextTaskNum++;
 	}
 	
 	/**
@@ -90,6 +103,52 @@ public class TaskList extends Observable implements Tabular, Serializable {
 	 * @return True if the task is successfully added to the TaskList
 	 */
 	public boolean addTask(String title, String description, Date start, Date due, Category c) {
+		//check for illegal values
+		if (	title == null || title.trim().equals("") ||
+				description == null || description.trim().equals("") ||
+				start == null || due == null || c == null) return false;
+		
+		//if we're all clear, lets turn the given data into a task!
+		String nextID = nextTaskNum + "-T";
+		Task newTask = new Task(title, description, start, due, c, nextID);
+		
+		//if this is the first task we're adding, lets just add it directly
+		if (list.isEmpty()) {
+			list.add(newTask);
+			return true;
+		}
+			
+		//the list is sorted by due date, with the soonest due date at the beginning of the list.
+		//once we find a task due date that's later than the one we've been given, we'll insert our
+		//task into the list before that one.
+		boolean spotFound = false;
+		int spotIdx = 0;
+		
+		//iterate through the list until a spot is found
+		while (!spotFound) {
+			
+			//if the spotIdx is equal to size, we'll be adding the task to the end of the list
+			if (spotIdx == list.size()) {
+				list.add(newTask);
+				return true;
+			}
+			
+			//if it's not equal to size, we'll roll through the list till we're good
+			Task current = (Task) list.get(spotIdx);
+			//compare current and newtask
+			int compare = current.compareTo(newTask);
+			
+			//if compare is greater than or equal to zero, insert into list at this index TODO figure out if this needs to be reverse
+			if (compare >= 0) {
+				list.add(spotIdx, newTask);
+				return true;
+			}
+			
+			//if that compare didn't work, increment the spotIdx before restarting this loop
+			spotIdx++;
+		} 
+		
+		//you shouldn't end out here, i don't think.. but just in case return false
 		return false;
 	}
 		
@@ -99,7 +158,7 @@ public class TaskList extends Observable implements Tabular, Serializable {
 	 * @return The task at the given index in this TaskList
 	 */
 	public Task getTaskAt(int idx) {
-		return null;
+		return (Task) list.get(idx);
 	}
 	
 	/**
@@ -116,7 +175,7 @@ public class TaskList extends Observable implements Tabular, Serializable {
 	 * @return the size of this tasklist
 	 */
 	public int size() {
-		return 0;
+		return list.size();
 	}
 	
 	/**
@@ -124,7 +183,7 @@ public class TaskList extends Observable implements Tabular, Serializable {
 	 * @return True if the tasklist is currently empty
 	 */
 	public boolean isEmpty() {
-		return false;
+		return list.isEmpty();
 	}
 	
 	/**
@@ -133,7 +192,7 @@ public class TaskList extends Observable implements Tabular, Serializable {
 	 * @return The Task that has been removed from this TaskList
 	 */
 	public Task removeTaskAt(int idx) {
-		return null;
+		return (Task) list.remove(idx);
 	}
 	
 	/**

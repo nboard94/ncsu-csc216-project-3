@@ -200,7 +200,7 @@ public class Task extends Observable implements Serializable {
 	 * @throws IllegalArgumentException If newTaskID is null or an empty string.
 	 */
 	private void setTaskID(String newTaskID) throws IllegalArgumentException {
-		if (newTaskID == null || newTaskID.equals("")) {
+		if (newTaskID == null || newTaskID.trim().equals("")) {
 			throw new IllegalArgumentException();
 		} else {
 			taskID = newTaskID;
@@ -283,6 +283,6 @@ public class Task extends Observable implements Serializable {
 	 * @return A value less than 0 if otherTask goes before this one, 0 if otherTask is equal to this one, and a value greater than one if this task goes before otherTask
 	 */
 	public int compareTo(Task otherTask) {
-		return 0;
+		return dueDateTime.compareTo(otherTask.getDueDateTime());
 	}
 }
