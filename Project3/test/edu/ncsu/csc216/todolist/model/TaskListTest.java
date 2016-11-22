@@ -388,7 +388,6 @@ public class TaskListTest {
 		String taskID1 = test.getTaskAt(0).getTaskID();
 		String taskID2 = test.getTaskAt(1).getTaskID();
 		
-		
 	}
 
 	/**
@@ -396,7 +395,26 @@ public class TaskListTest {
 	 */
 	@Test
 	public void testGet2DArray() {
-		fail("Not yet implemented");
+		//make sure the test object is empty
+		assertTrue(test.isEmpty());
+		
+		//fetch the array, make sure it's size is 0
+		Object[][] arrayTest = test.get2DArray();
+		assertEquals(0, arrayTest.length);
+		
+		//add a couple of items to the list
+		test.addTask(t1Title, t1Details, t1StartTime, t1DueTime, testCat);
+		test.addTask(t2Title, t2Details, t2StartTime, t2DueTime, testCat);
+		assertFalse(test.isEmpty());
+		assertEquals(2, test.size());
+		
+		//get the 2d array, make sure that it's got what it needs
+		arrayTest = test.get2DArray();
+		String t1TaskID = test.getTaskAt(0).getTaskID();
+		String t2TaskID = test.getTaskAt(1).getTaskID();
+		
+		assertEquals(t1TaskID, arrayTest[0][0]);
+		assertEquals(t2TaskID, arrayTest[1][0]);
 	}
 
 	/**

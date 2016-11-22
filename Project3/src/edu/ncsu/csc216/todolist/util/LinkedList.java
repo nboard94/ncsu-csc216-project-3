@@ -272,7 +272,6 @@ public class LinkedList  implements List, Serializable {
 		/** The Node's value. */
 		protected Object value;
 		/** The next Node in the LinkedList. */
-		@SuppressWarnings("unused")
 		private Node next;
 		
 		/**

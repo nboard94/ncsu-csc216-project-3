@@ -231,7 +231,30 @@ public class TaskList extends Observable implements Tabular, Serializable {
 	 * @return A 2D array of all the tasks in this list; each row is a Task, and each column contains the task's data
 	 */
 	public Object[][] get2DArray() {
-		return null;
+		//the 2d array we'll return at the end
+		Object[][] array;
+		
+		//if the list is currently empty, then return an empty array
+		if (this.isEmpty()) return new Object[0][0];
+		
+		//otherwise, we'll fill 'em up
+		//size() rows, 8 columns.
+		array = new Object[size()][8];
+		
+		for (int i = 0; i < size(); i++) {
+			Task current = (Task) list.get(i);
+			array[i][0] = current.getTaskID();
+			array[i][1] = current.getTitle();
+			array[i][2] = current.getCategory();
+			array[i][3] = current.getStartDateTime();
+			array[i][4] = current.getDueDateTime();
+			array[i][5] = current.getCompletedDateTime();
+			array[i][6] = current.isCompleted();
+			array[i][7] = current.getDetails();
+		}
+		
+		//return it once it's all filled out!
+		return array;
 	}
 	
 	/**
