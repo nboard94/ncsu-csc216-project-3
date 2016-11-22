@@ -388,6 +388,18 @@ public class TaskListTest {
 		String taskID1 = test.getTaskAt(0).getTaskID();
 		String taskID2 = test.getTaskAt(1).getTaskID();
 		
+		//attempt to remove task given an id, should return true
+		assertTrue(test.removeTask(taskID1));
+		
+		//attempt to remove one again, should return false this time
+		assertFalse(test.removeTask(taskID1));
+		
+		//attempt to remove the other
+		assertTrue(test.removeTask(taskID2));
+		
+		//attempt to remote second again, should return false
+		assertFalse(test.removeTask(taskID2));
+		
 	}
 
 	/**
