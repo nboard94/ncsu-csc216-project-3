@@ -48,6 +48,7 @@ public class Task extends Observable implements Serializable {
 		this.setDueDateTime(newDueDateTime);
 		this.setCategory(newCategory);
 		this.setTaskID(newTaskID);
+		this.setCompleted(false);
 	}
 	
 	/**
@@ -214,14 +215,7 @@ public class Task extends Observable implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((category == null) ? 0 : category.hashCode());
-		result = prime * result + (completed ? 1231 : 1237);
-		result = prime * result + ((completedDateTime == null) ? 0 : completedDateTime.hashCode());
-		result = prime * result + ((details == null) ? 0 : details.hashCode());
-		result = prime * result + ((dueDateTime == null) ? 0 : dueDateTime.hashCode());
-		result = prime * result + ((startDateTime == null) ? 0 : startDateTime.hashCode());
 		result = prime * result + ((taskID == null) ? 0 : taskID.hashCode());
-		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
 
@@ -230,51 +224,12 @@ public class Task extends Observable implements Serializable {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
+		if (!taskID.equals(((Task) obj).getTaskID())) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Task other = (Task) obj;
-		if (category == null) {
-			if (other.category != null)
-				return false;
-		} else if (!category.equals(other.category))
-			return false;
-		if (completed != other.completed)
-			return false;
-		if (completedDateTime == null) {
-			if (other.completedDateTime != null)
-				return false;
-		} else if (!completedDateTime.equals(other.completedDateTime))
-			return false;
-		if (details == null) {
-			if (other.details != null)
-				return false;
-		} else if (!details.equals(other.details))
-			return false;
-		if (dueDateTime == null) {
-			if (other.dueDateTime != null)
-				return false;
-		} else if (!dueDateTime.equals(other.dueDateTime))
-			return false;
-		if (startDateTime == null) {
-			if (other.startDateTime != null)
-				return false;
-		} else if (!startDateTime.equals(other.startDateTime))
-			return false;
-		if (taskID == null) {
-			if (other.taskID != null)
-				return false;
-		} else if (!taskID.equals(other.taskID))
-			return false;
-		if (title == null) {
-			if (other.title != null)
-				return false;
-		} else if (!title.equals(other.title))
-			return false;
+		}
+		
 		return true;
+				
 	}
 	
 	/**

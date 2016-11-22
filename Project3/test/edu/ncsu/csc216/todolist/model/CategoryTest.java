@@ -12,7 +12,7 @@ import org.junit.Test;
 public class CategoryTest {
 
 	/**
-	 * Tests the Category constructor
+	 * Tests the Category constructor.
 	 */
 	@Test
 	public void testCategory() {
@@ -52,7 +52,7 @@ public class CategoryTest {
 	}
 	
 	/**
-	 * Tests the Category's compareTo() method
+	 * Tests the Category's compareTo() method.
 	 */
 	@Test
 	public void testCompareTo() {
@@ -66,7 +66,7 @@ public class CategoryTest {
 	}
 	
 	/**
-	 * Tests Category's equals() method
+	 * Tests Category's equals method.
 	 */
 	@Test
 	public void testEquals() {
@@ -79,7 +79,7 @@ public class CategoryTest {
 	}
 	
 	/**
-	 * Test's Category's hashcode method
+	 * Test's Category's hashcode method.
 	 */
 	@Test
 	public void testHashCode() {
@@ -93,7 +93,7 @@ public class CategoryTest {
 	}
 	
 	/**
-	 * Tests Category's toString() method
+	 * Tests Category's toString() method.
 	 */
 	@Test
 	public void testToString() {
