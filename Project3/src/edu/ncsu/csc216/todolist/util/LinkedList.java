@@ -222,7 +222,7 @@ public class LinkedList  implements List, Serializable {
 	 * this node's next is the one to be removed from the list
 	 * @param idx the index of the node to be removed
 	 * @param n the node to check
-	 * @return the 
+	 * @return the node that was removed
 	 */
 	private Node remove(int idx, Node n) {
 		//base case, index = 0

@@ -109,12 +109,13 @@ public class TaskList extends Observable implements Tabular, Serializable {
 				start == null || due == null || c == null) return false;
 		
 		//if we're all clear, lets turn the given data into a task!
-		String nextID = nextTaskNum + "-T";
+		String nextID = this.getNextTaskNum() + "-T";
 		Task newTask = new Task(title, description, start, due, c, nextID);
 		
 		//if this is the first task we're adding, lets just add it directly
 		if (list.isEmpty()) {
 			list.add(newTask);
+			this.incNextTaskNum();
 			return true;
 		}
 			
@@ -130,6 +131,7 @@ public class TaskList extends Observable implements Tabular, Serializable {
 			//if the spotIdx is equal to size, we'll be adding the task to the end of the list
 			if (spotIdx == list.size()) {
 				list.add(newTask);
+				this.incNextTaskNum();
 				return true;
 			}
 			
@@ -141,6 +143,7 @@ public class TaskList extends Observable implements Tabular, Serializable {
 			//if compare is greater than or equal to zero, insert into list at this index TODO figure out if this needs to be reverse
 			if (compare >= 0) {
 				list.add(spotIdx, newTask);
+				this.incNextTaskNum();
 				return true;
 			}
 			
@@ -167,7 +170,15 @@ public class TaskList extends Observable implements Tabular, Serializable {
 	 * @return The index of the task with the given title, or -1 if no such task exists.
 	 */
 	public int indexOf(String title) {
-		return 0;
+		
+		//search the list for the given title
+		for (int i = 0; i < list.size(); i++) {
+			Task current = (Task) list.get(i);
+			if (current.getTitle().equals(title)) return i;
+		}
+		
+		//if you're out here the title isn't in the list
+		return -1;
 	}
 	
 	/**
@@ -201,6 +212,17 @@ public class TaskList extends Observable implements Tabular, Serializable {
 	 * @return True if the task has been removed
 	 */
 	public boolean removeTask(String taskID) {
+		//search the list for the task id
+		for (int i = 0; i < list.size(); i++) {
+			Task current = (Task) list.get(i);
+			
+			if (current.getTaskID().equals(taskID)) {
+				list.remove(i);
+				return true;
+			}
+		}
+		
+		//if you're out here the given ID wasn't in the list
 		return false;
 	}
 	
