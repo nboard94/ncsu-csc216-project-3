@@ -11,7 +11,7 @@ import edu.ncsu.csc216.todolist.model.TaskList;
  * data structures that contain Task and Category objects and acts as the controller
  * between the model and the GUI presentation view.
  * 
- * @author David Wright
+ * @author David Wright, Christian Byrnes, Nick Board
  * @version 1.0
  * 
  */
@@ -39,6 +39,19 @@ public class ToDoList extends Observable implements Serializable, Observer {
 	 * Constructs a new ToDoList
 	 */
 	public ToDoList() {
+		//initalize the task list... list...?
+		tasks = new TaskList[3];
+		numLists = 1;
+		
+		//construct the categorylist
+		categories = new CategoryList();
+		
+		//initialize everythin else
+		nextTaskListNum = 1;
+		changed = false;
+		
+		//add a new list to the tasklist
+		this.addTaskList();
 		
 	}
 	
@@ -47,7 +60,7 @@ public class ToDoList extends Observable implements Serializable, Observer {
 	 * @return The current changed value.
 	 */
 	public boolean isChanged() {
-		return false;
+		return changed;
 	}
 	
 	/**
@@ -55,7 +68,7 @@ public class ToDoList extends Observable implements Serializable, Observer {
 	 * @param b the value to set 'changed' to
 	 */
 	public void setChanged(boolean b) {
-		
+		changed = b;
 	}
 	
 	/**
@@ -63,15 +76,17 @@ public class ToDoList extends Observable implements Serializable, Observer {
 	 * @return The name of the file for this list
 	 */
 	public String getFilename() {
-		return null;
+		return filename;
 	}
 	
 	/**
 	 * Sets the file name for this list to the given parameter
-	 * @param s The new file name
+	 * @param filename The new file name
+	 * @throws IllegalArgumentException If the name is null or empty
 	 */
-	public void setFilename(String s) {
-		
+	public void setFilename(String filename) {
+		if (filename == null || filename.trim().equals("")) throw new IllegalArgumentException();
+		this.filename = filename;
 	}
 	
 	/**
@@ -79,14 +94,14 @@ public class ToDoList extends Observable implements Serializable, Observer {
 	 * @return The next number in the task list
 	 */
 	private int getNextTaskListNum() {
-		return 0;
+		return nextTaskListNum;
 	}
 	
 	/**
 	 * Increments the task list number
 	 */
 	private void incNextTaskListNum() {
-		
+		nextTaskListNum++;
 	}
 	
 	/**
@@ -94,16 +109,19 @@ public class ToDoList extends Observable implements Serializable, Observer {
 	 * @return The total number of task lists inside of this todo list
 	 */
 	public int getNumTaskLists() {
-		return 0;
+		return numLists;
 	}
 	
 	/**
 	 * Gets the task list at the given index inside this todo list
 	 * @param idx The index of the task list to retrieve
 	 * @return The task list at the given index
+	 * @throws IndexOutOfBoundsException if the index is less than zero or greater than or equal to size
 	 */
 	public TaskList getTaskList(int idx) {
-		return null;
+		if (idx < 0 || idx >= tasks.length) throw new IndexOutOfBoundsException();
+		
+		return tasks[idx];
 	}
 	
 	/**
@@ -111,7 +129,7 @@ public class ToDoList extends Observable implements Serializable, Observer {
 	 * @return The list of categories as a CategoryList
 	 */
 	public CategoryList getCategoryList() {
-		return null;
+		return categories;
 	}
 	
 	/**
@@ -119,15 +137,49 @@ public class ToDoList extends Observable implements Serializable, Observer {
 	 * @return the index of the newly added tasklist
 	 */
 	public int addTaskList() {
-		return 0;
+		//create the new tasklist, increment the task list number
+		TaskList newList = new TaskList("New List", "TL" + getNextTaskListNum());
+		incNextTaskListNum();
+		
+		
+		//if the array of tasklists is full, it's time to increase the size
+		if (tasks.length == numLists) {
+			
+			//create the new array of tasklists, which should be the current size + 3
+			TaskList[] oldArray = tasks;
+			tasks = new TaskList[oldArray.length + RESIZE];
+			
+			//add all the old items to the new list
+			for (int i = 0; i < oldArray.length; i++) {
+				tasks[i] = oldArray[i];
+			}
+		}
+		
+		//add the new task list to the list
+		tasks[numLists] = newList;
+		
+		//grab the value, increment the numLists, then return the new list's index
+		int index = numLists;
+		numLists++;
+		return index;
 	}
 	
 	/**
 	 * Removes a tasklist from this todo list given it's index in the array
 	 * @param idx the index of the tasklist to remove
+	 * @throw IndexOutOfBoundsException if the index is less than 0 or greater than/equal to size
 	 */
 	public void removeTaskList(int idx) {
+		//check for bad boiz
+		if (idx < 0 || idx >= tasks.length) throw new IndexOutOfBoundsException();
 		
+		//TODO: look this for loop over is things get rocky, it's probably this that's breaking...
+		for (int i = idx; i < tasks.length; i++) {
+			if (i + 1 == tasks.length) tasks[i] = null;
+			else tasks[i] = tasks[i + 1];
+		}
+		
+		numLists--;
 	}
 	
 	/**
