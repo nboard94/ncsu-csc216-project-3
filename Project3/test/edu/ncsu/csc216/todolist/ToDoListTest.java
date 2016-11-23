@@ -91,7 +91,14 @@ public class ToDoListTest {
 	 */
 	@Test
 	public void testAddTaskList() {
-		fail("Not yet implemented");
+		ToDoList tDL = new ToDoList();
+		tDL.addTaskList();
+		assertEquals(2, tDL.getNumTaskLists());
+		assertEquals("TL1", tDL.getTaskList(0).getTaskListID());
+		
+		tDL.addTaskList();
+		assertEquals(3, tDL.getNumTaskLists());
+		assertEquals("TL2", tDL.getTaskList(1).getTaskListID());
 	}
 
 	/**
@@ -99,7 +106,18 @@ public class ToDoListTest {
 	 */
 	@Test
 	public void testRemoveTaskList() {
-		fail("Not yet implemented");
+		ToDoList tDL = new ToDoList();
+		tDL.addTaskList();
+		assertEquals(2, tDL.getNumTaskLists());
+		assertEquals("TL1", tDL.getTaskList(0).getTaskListID());
+		
+		tDL.addTaskList();
+		assertEquals(3, tDL.getNumTaskLists());
+		assertEquals("TL2", tDL.getTaskList(1).getTaskListID());
+		
+		tDL.removeTaskList(0);
+		assertEquals(2, tDL.getNumTaskLists());
+		assertEquals("TL2", tDL.getTaskList(0).getTaskListID());
 	}
 
 	/**

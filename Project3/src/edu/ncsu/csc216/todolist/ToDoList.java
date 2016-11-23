@@ -41,7 +41,7 @@ public class ToDoList extends Observable implements Serializable, Observer {
 	public ToDoList() {
 		//initalize the task list... list...?
 		tasks = new TaskList[3];
-		numLists = 1;
+		numLists = 0;
 		
 		//construct the categorylist
 		categories = new CategoryList();
