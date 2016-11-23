@@ -119,7 +119,7 @@ public class ToDoList extends Observable implements Serializable, Observer {
 	 * @throws IndexOutOfBoundsException if the index is less than zero or greater than or equal to size
 	 */
 	public TaskList getTaskList(int idx) {
-		if (idx < 0 || idx >= tasks.length) throw new IndexOutOfBoundsException();
+		if (idx < 0 || idx >= getNumTaskLists()) throw new IndexOutOfBoundsException();
 		
 		return tasks[idx];
 	}

@@ -7,7 +7,7 @@ import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.ncsu.csc216.todolist.model.Category;
+import edu.ncsu.csc216.todolist.model.*;
 
 /**
  * The test cases for the ToDoList class
@@ -83,7 +83,33 @@ public class ToDoListTest {
 	 */
 	@Test
 	public void testGetTaskList() {
-		fail("Not yet implemented");
+		//make sure that there is one todo list in test right now
+		TaskList defaultList = test.getTaskList(0);
+		assertTrue(defaultList.isEmpty());
+		
+		//try negative index, should fail
+		try {
+			defaultList = test.getTaskList(-1);
+			fail("Negative index");
+		} catch (IndexOutOfBoundsException e) {
+			assertTrue(defaultList.isEmpty());
+		}
+		
+		//try oversized index, should fail
+		try {
+			defaultList = test.getTaskList(2);
+			fail("Oversized index");
+		} catch (IndexOutOfBoundsException e) {
+			assertTrue(defaultList.isEmpty());
+		}
+		
+		//try index @ size, should fail
+		try {
+			defaultList = test.getTaskList(1);
+			fail("Index = size");
+		} catch (IndexOutOfBoundsException e) {
+			assertTrue(defaultList.isEmpty());
+		}
 	}
 
 	/**
