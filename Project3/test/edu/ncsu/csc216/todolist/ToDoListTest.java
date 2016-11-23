@@ -125,6 +125,14 @@ public class ToDoListTest {
 		tDL.addTaskList();
 		assertEquals(3, tDL.getNumTaskLists());
 		assertEquals("TL2", tDL.getTaskList(1).getTaskListID());
+		
+		tDL.addTaskList();
+		assertEquals(4, tDL.getNumTaskLists());
+		assertEquals("TL3", tDL.getTaskList(2).getTaskListID());
+		
+		tDL.addTaskList();
+		assertEquals(5, tDL.getNumTaskLists());
+		assertEquals("TL4", tDL.getTaskList(3).getTaskListID());
 	}
 
 	/**
@@ -144,6 +152,20 @@ public class ToDoListTest {
 		tDL.removeTaskList(0);
 		assertEquals(2, tDL.getNumTaskLists());
 		assertEquals("TL2", tDL.getTaskList(0).getTaskListID());
+		
+		try {
+			tDL.removeTaskList(100);
+			fail();
+		} catch (IndexOutOfBoundsException e) {
+			assertEquals(2, tDL.getNumTaskLists());
+		}
+		
+		try {
+			tDL.removeTaskList(-2);
+			fail();
+		} catch (IndexOutOfBoundsException e) {
+			assertEquals(2, tDL.getNumTaskLists());
+		}
 	}
 
 	/**
