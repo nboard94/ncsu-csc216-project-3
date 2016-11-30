@@ -201,7 +201,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @param d the completed date for the Task.
 	 */
 	void setTaskCompleted(Date d) {
-		this.setTaskCompleted(d);
+		this.taskCompleted.setValue(d);
 	}
 	
 	/**
