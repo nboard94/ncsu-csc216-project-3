@@ -57,27 +57,32 @@ public class TaskEditPane extends Component implements Serializable {
 	 */
 	public TaskEditPane(CategoryList c) {
 		super();
-		this.data = data;
+		categories = c;
 		add = false;
 		edit = false;
 		init();
 	}
 	
 	/**
-	 * Constructor fora task edit panel.
+	 * Constructor for a task edit panel.
 	 * @param t TaskData used the populate the pane
 	 * @param c CategoryList used to populate the pane
 	 */
 	public TaskEditPane(TaskData t, CategoryList c) {
-		
+		super();
+		categories = c;
+		data = t;
+		add = false;
+		edit = false;
+		init();
 	}
 	
 	/**
 	 * Initializes the GUI.
 	 */
 	private void init() {
-
-		
+		initView();
+		fillFields();
 	}
 	
 	/**
