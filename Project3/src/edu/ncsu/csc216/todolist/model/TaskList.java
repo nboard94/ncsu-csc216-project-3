@@ -263,6 +263,17 @@ public class TaskList extends Observable implements Tabular, Serializable {
 	 * @param arg The arguments to pass on to notifyObserver()
 	 */
 	public void update(Observable o, Object arg) {
+		boolean hasCategory = false;
+		//the observable item in question should be category, so make sure it's a category
+		try {
+			Task c = (Task) o;
+			if (list.contains(c)) hasCategory = true;
+		} catch (Exception e) {
+			throw new IllegalArgumentException();
+		}
+		if (!hasCategory) throw new IllegalArgumentException();
+		
+		this.notifyObservers(arg); //TODO: Do we need to do anything else here?
 		
 	}
 }

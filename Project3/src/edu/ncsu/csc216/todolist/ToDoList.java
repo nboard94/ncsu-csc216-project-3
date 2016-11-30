@@ -255,7 +255,11 @@ public class ToDoList extends Observable implements Serializable, Observer {
 	 * @param arg the arguments to pass up to notifyObservers()
 	 */
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
+		//no need to check observable or anything, just pass arg to observer and set changed to true
+		this.notifyObservers(arg);
+		
+		setChanged(); //???
+		setChanged(true);
 	}
 	
 }
