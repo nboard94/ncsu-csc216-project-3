@@ -81,7 +81,27 @@ public class ToDoListTest {
 	 */
 	@Test
 	public void testSetFilename() {
-		fail("Not yet implemented");
+		//set the file name to the given string, should succeed
+		String fileName = "filename";
+		test.setFilename(fileName);
+		
+		//attempt to set the filename to null, should fail
+		try {
+			test.setFilename(null);
+			fail("No null file name");
+		} catch (IllegalArgumentException e) {
+			assertEquals(fileName, test.getFilename());
+		}
+		
+		//attempt empty filename, should fail
+		try {
+			test.setFilename(null);
+			fail("No null file name");
+		} catch (IllegalArgumentException e) {
+			assertEquals(fileName, test.getFilename());
+		}
+		
+		
 	}
 
 	/**
