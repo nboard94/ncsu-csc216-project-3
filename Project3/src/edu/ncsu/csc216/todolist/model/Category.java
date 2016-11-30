@@ -137,7 +137,6 @@ public class Category extends Observable implements Serializable {
 		return result;
 	}
 	
-	//TODO Couldn't find the format for the string, is this right?
 	/**
 	 * Returns this Category represented as a string value
 	 * @return This Category represented as a String value
