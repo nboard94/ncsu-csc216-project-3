@@ -121,7 +121,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the task start date.
 	 */
 	Date getTaskStart() {
-		return this.getTaskStart();
+		return this.data.getStartDateTime();
 	}
 	
 	/**
@@ -129,7 +129,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the task due date.
 	 */
 	Date getTaskDue() {
-		return this.getTaskDue();
+		return this.data.getDueDateTime();
 	}
 	
 	/**
@@ -137,7 +137,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the task completed date.
 	 */
 	Date getTaskCompleted() {
-		return this.getTaskCompleted();
+		return this.data.getCompletedDateTime();
 	}
 	
 	/**
@@ -145,7 +145,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the text field for taskID.
 	 */
 	JTextField getTaskID() {
-		return this.getTaskID();
+		return this.taskID;
 	}
 	
 	/**
@@ -153,7 +153,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the text field for taskTitle.
 	 */
 	JTextField getTaskTitle() {
-		return this.getTaskTitle();
+		return this.taskTitle;
 	}
 	
 	/**
@@ -161,7 +161,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the combo box for task's categories.
 	 */
 	JComboBox<Category> getCategory() {
-		return this.getCategory();
+		return taskCat;
 	}
 	
 	/**
@@ -169,7 +169,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the test area for the taskDetauls.
 	 */
 	JTextArea getTaskDetails() {
-		return this.getTaskDetails();
+		return this.taskDetails;
 	}
 	
 	/**
@@ -185,7 +185,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @param d the start date for the Task.
 	 */
 	void setTaskStart(Date d) {
-		this.taskStart.setValue(d);
+		this.taskStart.setValue(d);;
 	}
 	
 	/**
@@ -225,6 +225,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 */
 	void enableAdd() {
 		add = true;
+		disableEdit();
 	}
 	
 	/**
@@ -239,14 +240,17 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @param t TaskData to populate the edit area with.
 	 */
 	void enableEdit(TaskData t) {
+		edit = true;
+		disableAdd();
 		
+		this.setTaskData(t);
 	}
 	
 	/**
 	 * Disables edit mode.
 	 */
 	void disableEdit() {
-		
+		edit = false;
 	}
 	
 	/**

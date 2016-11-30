@@ -7,7 +7,7 @@
     <rules>
         <rule>
             <name>CollapsibleIfStatements</name>
-            <ruleset>Basic</ruleset>
+            <ruleset>Basic Velocity</ruleset>
         </rule>
         <rule>
             <name>EmptyIfStmt</name>
@@ -51,7 +51,7 @@
         </rule>
         <rule>
             <name>CollapsibleIfStatements</name>
-            <ruleset>Basic</ruleset>
+            <ruleset>Basic Velocity</ruleset>
         </rule>
         <rule>
             <name>ClassCastExceptionWithToArray</name>
@@ -107,15 +107,15 @@
         </rule>
         <rule>
             <name>MethodNamingConventions</name>
-            <ruleset>Naming</ruleset>
+            <ruleset>Style</ruleset>
         </rule>
         <rule>
             <name>ClassNamingConventions</name>
-            <ruleset>Naming</ruleset>
+            <ruleset>Style</ruleset>
         </rule>
         <rule>
             <name>MethodWithSameNameAsEnclosingClass</name>
-            <ruleset>Naming</ruleset>
+            <ruleset>Style</ruleset>
         </rule>
         <rule>
             <name>SuspiciousHashcodeMethodName</name>
@@ -175,15 +175,15 @@
         </rule>
         <rule>
             <name>MethodNamingConventions</name>
-            <ruleset>Naming</ruleset>
+            <ruleset>Style</ruleset>
         </rule>
         <rule>
             <name>ClassNamingConventions</name>
-            <ruleset>Naming</ruleset>
+            <ruleset>Style</ruleset>
         </rule>
         <rule>
             <name>MethodWithSameNameAsEnclosingClass</name>
-            <ruleset>Naming</ruleset>
+            <ruleset>Style</ruleset>
         </rule>
         <rule>
             <name>UnnecessaryParentheses</name>
@@ -214,7 +214,7 @@
             <ruleset>Unnecessary</ruleset>
         </rule>
         <rule>
-            <name>JUnitTestClassNeedsTestCase</name>
+            <name>FormalParametersNeedMeaningfulNames</name>
             <ruleset>ncsucscpmd</ruleset>
         </rule>
         <rule>
@@ -234,7 +234,7 @@
             <ruleset>ncsucscpmd</ruleset>
         </rule>
         <rule>
-            <name>FormalParametersNeedMeaningfulNames</name>
+            <name>JUnitTestClassNeedsTestCase</name>
             <ruleset>ncsucscpmd</ruleset>
         </rule>
     </rules>
