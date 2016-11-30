@@ -2,17 +2,21 @@ package edu.ncsu.csc216.todolist.ui;
 
 import java.io.Serializable;
 
+import javax.swing.event.TableModelListener;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableModel;
+
 /**
  * TaskTableModel is a wrapper for the information in TaskList that 
  * can be used by a JTable. 
  * @author Nicholas Board and Christian Byrnes
  */
-public class TaskTableModel implements Serializable {
+public class TaskTableModel extends AbstractTableModel implements Serializable, TableModel {
 
 	/** Serial version UID */
 	private static final long serialVersionUID = 5954551753060998701L;
 	/** Names for each of the columns in the TableModel */
-	private String[] colNames;
+	private String[] colNames = {"ID", "Task Name", "Task Description"};
 	/** Array of CategoryList information */
 	private Object[][] data;
 	
@@ -21,7 +25,8 @@ public class TaskTableModel implements Serializable {
 	 * @param data the data to populate the TableModel
 	 */
 	public TaskTableModel(Object[][] data) {
-		
+		super();
+		this.data = data;
 	}
 	
 	/**
@@ -29,7 +34,7 @@ public class TaskTableModel implements Serializable {
 	 * @return the number of rows in the data
 	 */
 	public int getRowCount() {
-		return 0;
+		return data.length;
 	}
 	
 	/**
@@ -37,7 +42,7 @@ public class TaskTableModel implements Serializable {
 	 * @return the number of columns in the data 
 	 */
 	public int getColumnCount() {
-		return 0;
+		return colNames.length;
 	}
 	
 	/**
@@ -46,7 +51,7 @@ public class TaskTableModel implements Serializable {
 	 * @return the column name at the given index
 	 */
 	public String getColumnName(int col) {
-		return null;
+		return colNames[col];
 	}
 	
 	/**
@@ -56,7 +61,7 @@ public class TaskTableModel implements Serializable {
 	 * @return the value in the data at the given row and col
 	 */
 	public Object getValueAt(int row, int col) {
-		return null;
+		return data[row][col];
 	}
 	
 	/**
@@ -66,7 +71,8 @@ public class TaskTableModel implements Serializable {
 	 * @param col the index for the column
 	 */
 	public void setValueAt(Object value, int row, int col) {
-		
+		data[row][col] = value;
+		fireTableCellUpdated(row, col);	
 	}
 	
 	/**
@@ -85,6 +91,30 @@ public class TaskTableModel implements Serializable {
 	 * @param row the row to set
 	 */
 	public void setTaskRowRata(int d, TaskData row) {
+		
+	}
+
+	@Override
+	public void addTableModelListener(TableModelListener arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Class<?> getColumnClass(int arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isCellEditable(int arg0, int arg1) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void removeTableModelListener(TableModelListener arg0) {
+		// TODO Auto-generated method stub
 		
 	}
 }

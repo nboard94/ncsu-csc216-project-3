@@ -1,11 +1,14 @@
 package edu.ncsu.csc216.todolist.ui;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.EventListener;
 import java.util.Observable;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JSpinner;
@@ -53,7 +56,11 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @param c CategoryList used to populate the pane
 	 */
 	public TaskEditPane(CategoryList c) {
-		
+		super();
+		this.data = data;
+		add = false;
+		edit = false;
+		init();
 	}
 	
 	/**
@@ -69,6 +76,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * Initializes the GUI.
 	 */
 	private void init() {
+
 		
 	}
 	
@@ -84,7 +92,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the spinner for TaskStart.
 	 */
 	JSpinner getTaskStartSpinner() {
-		return null;
+		return this.taskStart;
 	}
 	
 	/**
@@ -92,7 +100,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the spinner for TaskDue.
 	 */
 	JSpinner getTaskDueSpinner() {
-		return null;
+		return this.taskDue;
 	}
 	
 	/**
@@ -100,7 +108,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the spinner for TaskCompleted.
 	 */
 	JSpinner getTaskCompletedSpinner() {
-		return null;
+		return this.taskCompleted;
 	}
 	
 	/**
@@ -108,7 +116,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the task start date.
 	 */
 	Date getTaskStart() {
-		return null;
+		return this.getTaskStart();
 	}
 	
 	/**
@@ -116,7 +124,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the task due date.
 	 */
 	Date getTaskDue() {
-		return null;
+		return this.getTaskDue();
 	}
 	
 	/**
@@ -124,7 +132,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the task completed date.
 	 */
 	Date getTaskCompleted() {
-		return null;
+		return this.getTaskCompleted();
 	}
 	
 	/**
@@ -132,7 +140,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the text field for taskID.
 	 */
 	JTextField getTaskID() {
-		return null;
+		return this.getTaskID();
 	}
 	
 	/**
@@ -140,7 +148,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the text field for taskTitle.
 	 */
 	JTextField getTaskTitle() {
-		return null;
+		return this.getTaskTitle();
 	}
 	
 	/**
@@ -148,7 +156,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the combo box for task's categories.
 	 */
 	JComboBox<Category> getCategory() {
-		return null;
+		return this.getCategory();
 	}
 	
 	/**
@@ -156,7 +164,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the test area for the taskDetauls.
 	 */
 	JTextArea getTaskDetails() {
-		return null;
+		return this.getTaskDetails();
 	}
 	
 	/**
@@ -164,7 +172,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the check box for task complete.
 	 */
 	JCheckBox getComplete() {
-		return null;
+		return this.complete;
 	}
 	
 	/**
@@ -172,7 +180,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @param d the start date for the Task.
 	 */
 	void setTaskStart(Date d) {
-		
+		this.taskStart.setValue(d);
 	}
 	
 	/**
@@ -180,7 +188,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @param d the due date for the Task.
 	 */
 	void setTaskDue(Date d) {
-		
+		this.taskDue.setValue(d);
 	}
 	
 	/**
@@ -188,7 +196,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @param d the completed date for the Task.
 	 */
 	void setTaskCompleted(Date d) {
-		
+		this.setTaskCompleted(d);
 	}
 	
 	/**
@@ -196,7 +204,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return true if in add mode
 	 */
 	boolean isAddMode() {
-		return false;
+		return add;
 	}
 	
 	/**
@@ -204,21 +212,21 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return true if in edit mode.
 	 */
 	boolean isEditMode() {
-		return false;
+		return edit;
 	}
 	
 	/**
 	 * Enables add mode and disables edit.
 	 */
 	void enableAdd() {
-		
+		add = true;
 	}
 	
 	/**
 	 * Disables add mode.
 	 */
 	void disableAdd() {
-		
+		add = false;
 	}
 	
 	/**

@@ -6,7 +6,9 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JTable;
+import javax.swing.table.TableColumn;
 
+import edu.ncsu.csc216.todolist.model.CategoryList;
 import edu.ncsu.csc216.todolist.model.TaskList;
 
 /**
@@ -18,13 +20,13 @@ public class TaskListPane extends Component implements Observer, Serializable {
 	/** Serial version UID */
 	private static final long serialVersionUID = -2210716111020406799L;
 	/** List of tasks to display */
-	private TaskList tasks;
+	private TaskList taskList;
 	/** TaskTableModel which displays the list of tasks */
-	private TaskTableModel ttm;
+	private TaskTableModel taskTableModel;
 	/** Table for the tasks */
 	private JTable table;
 	/** Width of columns */
-	private int[] coldWidths;
+	private int[] colWidths = {50, 250, 750};
 	
 	
 	/**
@@ -32,7 +34,12 @@ public class TaskListPane extends Component implements Observer, Serializable {
 	 * @param taskList TaskList of Task objects.
 	 */
 	public TaskListPane(TaskList taskList) {
+		super();
+		this.taskList = taskList;
 		
+		this.taskList.addObserver(this);
+		taskTableModel = new TaskTableModel(taskList.get2DArray());
+		initView();
 	}
 	
 	/**
@@ -40,7 +47,7 @@ public class TaskListPane extends Component implements Observer, Serializable {
 	 * @return the TaskTableModel
 	 */
 	public TaskTableModel getTaskTableModel() {
-		return null;
+		return taskTableModel;
 	}
 
 	/**
@@ -48,7 +55,7 @@ public class TaskListPane extends Component implements Observer, Serializable {
 	 * @return the JTable
 	 */
 	public JTable getTable() {
-		return null;
+		return table;
 	}
 	
 	/**
@@ -56,14 +63,24 @@ public class TaskListPane extends Component implements Observer, Serializable {
 	 * and associating the JTable with the TaskTableModel.
 	 */
 	private void initView() {
+		table = new JTable(taskTableModel);
+
 		
+		for (int i = 0; i < colWidths.length; i++) {
+			TableColumn col = table.getColumnModel().getColumn(i);
+			col.setPreferredWidth(colWidths[i]);
+		}
+		
+		table.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+		table.setFillsViewportHeight(false);
+		//setViewportView(table);
 	} 
 	
 	/**
 	 * Clears the selection.
 	 */
 	public void clearSelection() {
-		
+		table.clearSelection();
 	}
 	
 	/**
@@ -74,6 +91,21 @@ public class TaskListPane extends Component implements Observer, Serializable {
 	 * @param arg any additional information needed about the change.
 	 */
 	public void update(Observable o, Object arg) {
-		
+		if (o instanceof CategoryList) {
+			CategoryList cl = (CategoryList)o;
+			//If there is a different number of rows, create a show new CategoryTableModel.
+			if (cl.size() != taskTableModel.getRowCount()) {
+				 taskTableModel = new TaskTableModel(cl.get2DArray());
+				 table.setModel(taskTableModel);
+			} else {
+				//Otherwise, just update the values directly.
+				Object[][] arr = cl.get2DArray();
+				for (int i = 0; i < arr.length; i++) {
+					for (int j = 0; j < taskTableModel.getColumnCount(); j++) {
+						taskTableModel.setValueAt(arr[i][j], i, j);
+					}
+				}
+			}
+		}
 	}
 }
