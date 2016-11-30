@@ -66,8 +66,14 @@ public class ToDoListTest {
 	 */
 	@Test
 	public void testIsChanged() {
-		fail("Not yet implemented");
-		// TODO: Work on update before working on this
+		//at first, ischanged should return false
+		assertFalse(test.isChanged());
+		
+		//change it to true
+		test.setChanged(true);
+		
+		//assert that ischanged returns true
+		assertTrue(test.isChanged());
 	}
 
 	/**
@@ -166,22 +172,6 @@ public class ToDoListTest {
 		} catch (IndexOutOfBoundsException e) {
 			assertEquals(2, tDL.getNumTaskLists());
 		}
-	}
-
-	/**
-	 * Test method for saving a data file
-	 */
-	@Test
-	public void testSaveDataFile() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for opening a data file
-	 */
-	@Test
-	public void testOpenDataFile() {
-		fail("Not yet implemented");
 	}
 
 	/**

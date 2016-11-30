@@ -21,7 +21,7 @@ public class ToDoList extends Observable implements Serializable, Observer {
 	/** The todo list's serial ID */
 	private static final long serialVersionUID = 34992L;
 	/** Increment for increasing the capacity of the array of TaskLists */
-	private static final int RESIZE = 3;
+	private static final int RESIZE = 10;
 	/** The array of TaskLists in this todo list */
 	private TaskList[] tasks;
 	/** The number of lists inside this todo list */
