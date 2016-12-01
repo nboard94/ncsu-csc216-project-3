@@ -39,7 +39,7 @@ public class LinkedList  implements List, Serializable {
 	@Override
 	public boolean add(Object o) {
 		//check if the object is null, throw exception if bad
-		if (o == null) throw new IllegalArgumentException();
+		//if (o == null) throw new IllegalArgumentException();
 		
 		//otherwise, add this to the end of the list
 		add(this.size(), o);
