@@ -2,6 +2,7 @@ package edu.ncsu.csc216.todolist.ui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.FlowLayout;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.EventListener;
@@ -11,12 +12,16 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import edu.ncsu.csc216.todolist.model.Category;
 import edu.ncsu.csc216.todolist.model.CategoryList;
+import edu.ncsu.csc216.todolist.model.TaskList;
 
 /**
  * Panel for editing Tasks.
@@ -89,7 +94,20 @@ public class TaskEditPane extends Component implements Serializable {
 	 * Initializes the view.
 	 */
 	private void initView() {
-		
+		/*JPanel p = new JPanel(new FlowLayout(FlowLayout.LEADING));
+		p.add(new JLabel("Task ID: ", SwingConstants.LEFT));
+		p.add(getTaskID());
+		this.add(p);
+		p = new JPanel(new FlowLayout(FlowLayout.LEADING));
+		p.add(new JLabel("Task Title: ", SwingConstants.LEFT));
+		p.add(getCategoryName());
+		this.add(p);
+		p = new JPanel(new FlowLayout(FlowLayout.LEADING));
+		p.add(new JLabel("Category Description: ", SwingConstants.LEFT));
+		this.add(p);
+		p = new JPanel(new FlowLayout(FlowLayout.LEADING));
+		p.add(getCategoryDesc());
+		this.add(p);*/
 	}
 	
 	/**
@@ -121,7 +139,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the task start date.
 	 */
 	Date getTaskStart() {
-		return this.data.getStartDateTime();
+		return (Date) taskStart.getValue();
 	}
 	
 	/**
@@ -129,7 +147,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the task due date.
 	 */
 	Date getTaskDue() {
-		return this.data.getDueDateTime();
+		return (Date) taskDue.getValue();
 	}
 	
 	/**
@@ -137,7 +155,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the task completed date.
 	 */
 	Date getTaskCompleted() {
-		return this.data.getCompletedDateTime();
+		return (Date) taskCompleted.getValue();
 	}
 	
 	/**
@@ -185,7 +203,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @param d the start date for the Task.
 	 */
 	void setTaskStart(Date d) {
-		this.taskStart.setValue(d);;
+		this.taskStart.setValue(d);
 	}
 	
 	/**
@@ -282,9 +300,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * Fills the fields with the appropriate text from the CategoryData field.
 	 */
 	void fillFields() {
-//		/** Combo box for task's category */
-//		private JComboBox<Category> taskCat;
-		
+		/*
 		//set task fields
 		taskID.setText(data.getTaskID());
 		taskTitle.setText(data.getTitle());
@@ -297,7 +313,7 @@ public class TaskEditPane extends Component implements Serializable {
 		taskCat = new JComboBox<Category>();
 		for (int i = 0; i < categories.size(); i++) {
 			taskCat.addItem(categories.getCategoryAt(i));
-		}
+		}*/
 	}
 	
 	/**
@@ -323,6 +339,14 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @param args any additional information needed about the change.
 	 */
 	public void update(Observable o, Object args) {
-		
+		boolean isCorrectObservable = false;
+		try {
+			//first try to convert the observable into a taskdata object
+			TaskList td = (TaskList) o;
+			//if it works, try to check if it's in this edit pane rn
+			
+		} catch (Exception e) {
+			
+		}
 	}
 }
