@@ -377,6 +377,8 @@ public class ToDoList extends Observable implements Serializable, Observer {
 		//grab the value, increment the numLists, then return the new list's index
 		int index = numLists;
 		numLists++;
+		this.setChanged();
+		this.notifyObservers(this);
 		return index;
 	}
 	
