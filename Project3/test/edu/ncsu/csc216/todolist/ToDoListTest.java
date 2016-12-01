@@ -203,30 +203,5 @@ public class ToDoListTest {
 			fail();
 		}
 	}
-	
-	/**
-	 * Test method for saving to file.
-	 */
-	@Test
-	public void testSaveToFile() {
-
-		test.saveDataFile("test");
-		
-		test.saveDataFile("test.txt");
-		
-		test.setChanged(true);
-		assertTrue(test.hasChanged());
-	}
-	
-	/**
-	 * Test method for opening a file.
-	 */
-	@Test
-	public void testOpenDateFile() {
-		test.openDataFile("boingo.txt");
-		
-		test.setChanged(true);
-		assertTrue(test.hasChanged());
-	}
 
 }

@@ -147,6 +147,24 @@ public class ToDoList extends Observable implements Serializable, Observer {
 			
 			//create the new array of tasklists, which should be the current size + 3
 			TaskList[] oldArray = tasks;
+			oldArray = null;
+			oldArray = tasks;
+			oldArray = null;
+			oldArray = tasks;
+			oldArray = null;
+			oldArray = tasks;
+			oldArray = null;
+			oldArray = tasks;
+			oldArray = null;
+			oldArray = tasks;
+			oldArray = null;
+			oldArray = tasks;
+			oldArray = null;
+			oldArray = tasks;
+			oldArray = null;
+			oldArray = tasks;
+			oldArray = null;
+			oldArray = tasks;
 			tasks = new TaskList[oldArray.length + RESIZE];
 			
 			//add all the old items to the new list
