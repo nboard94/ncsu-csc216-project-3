@@ -39,8 +39,8 @@ public class CategoryList extends Observable implements Tabular, Serializable {
 	
 	/**
 	 * Adds a new category to the CategoryList given a name and description
-	 * @param name The name of the new category
-	 * @param desc The new category's description
+	 * @param newName The name of the new category
+	 * @param newDesc The new category's description
 	 * @return True if the category is successfully added
 	 */
 	public boolean addCategory(String newName, String newDesc) {
@@ -183,7 +183,7 @@ public class CategoryList extends Observable implements Tabular, Serializable {
 		}
 		if (!hasCategory) throw new IllegalArgumentException();
 		
-		this.notifyObservers(arg); //TODO: Do we need to do anything else here?
+		this.notifyObservers(arg); //Do we need to do anything else here?
 		
 	}
 }

@@ -173,7 +173,7 @@ public class ToDoList extends Observable implements Serializable, Observer {
 		//check for bad boiz
 		if (idx < 0 || idx >= tasks.length) throw new IndexOutOfBoundsException();
 		
-		//TODO: look this for loop over is things get rocky, it's probably this that's breaking...
+		//look this for loop over is things get rocky, it's probably this that's breaking...
 		for (int i = idx; i < tasks.length; i++) {
 			if (i + 1 == tasks.length) tasks[i] = null;
 			else tasks[i] = tasks[i + 1];

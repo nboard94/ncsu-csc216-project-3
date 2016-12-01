@@ -140,7 +140,7 @@ public class LinkedList  implements List, Serializable {
 		//goes through the list until the item is retrieved
 		Node current = head.next;
 		
-		for (int i = 0; i < index; i ++) {
+		for (int i = 0; i < index; i++) {
 			current = current.next;
 		}
 		
@@ -194,8 +194,7 @@ public class LinkedList  implements List, Serializable {
      */
 	@Override
 	public boolean isEmpty() {
-		if (head.next == null) return true;
-		else return false;
+		return head.next == null;
 	}
 
     /**
