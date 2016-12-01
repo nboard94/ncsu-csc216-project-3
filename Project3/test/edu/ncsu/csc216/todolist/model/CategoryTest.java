@@ -98,6 +98,6 @@ public class CategoryTest {
 	@Test
 	public void testToString() {
 		Category c1 = new Category("Apple", "Name1", "Desc1");
-		assertEquals(c1.toString(), "Apple, Name1, Desc1");
+		assertEquals(c1.toString(), "Name1");
 	}
 }
