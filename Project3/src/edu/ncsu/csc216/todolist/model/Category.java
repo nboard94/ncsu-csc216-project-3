@@ -118,24 +118,28 @@ public class Category extends Observable implements Serializable {
 		return this.getCategoryID().compareTo(c.getCategoryID());
 	}
 	
-	//TODO, equals and hashcode implemented correctly?  Just based off of categoryID?
-	/**
-	 * Checks if this object is equal to the one provided in the parameters
-	 * @param obj the object to compare to this one
-	 * @return True if the object is equal to this one
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		
-		if (!categoryID.equals(((Category) obj).getCategoryID())) {
+		if (this == obj)
+			return true;
+		if (obj == null)
 			return false;
-		}
+		if (getClass() != obj.getClass())
+			return false;
+		Category other = (Category) obj;
+		if (categoryID == null) {
+			if (other.categoryID != null)
+				return false;
+		} else if (!categoryID.equals(other.categoryID))
+			return false;
 		return true;
 	}
 
-	/**
-	 * Gets the Category's hashcode
-	 * @return int the hashcode for for this Category
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
 	public int hashCode() {
