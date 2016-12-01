@@ -119,6 +119,7 @@ public class TaskList extends Observable implements Observer, Tabular, Serializa
 		
 		//if this is the first task we're adding, lets just add it directly
 		if (list.isEmpty()) {
+			
 			list.add(newTask);
 			this.incNextTaskNum();
 			this.setChanged();
