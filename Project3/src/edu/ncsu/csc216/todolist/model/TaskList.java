@@ -213,7 +213,10 @@ public class TaskList extends Observable implements Tabular, Serializable {
 	 * @return The Task that has been removed from this TaskList
 	 */
 	public Task removeTaskAt(int idx) {
-		return (Task) list.remove(idx);
+		list.remove(idx);
+		this.setChanged();
+		this.notifyObservers(this);
+		return (Task) list.get(idx);
 	}
 	
 	/**
