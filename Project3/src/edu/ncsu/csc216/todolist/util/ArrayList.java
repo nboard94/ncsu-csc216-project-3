@@ -67,7 +67,7 @@ public class ArrayList implements List, Serializable {
 		if (size() == list.length) {
 			resize();
 		}
-		
+		 
 		list[size()] = o;
 		size++;
 		return true;
