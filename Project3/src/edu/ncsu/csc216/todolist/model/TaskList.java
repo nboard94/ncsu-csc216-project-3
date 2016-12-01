@@ -273,7 +273,7 @@ public class TaskList extends Observable implements Tabular, Serializable {
 		}
 		if (!hasCategory) throw new IllegalArgumentException();
 		
-		this.notifyObservers(arg); //TODO: Do we need to do anything else here?
+		this.notifyObservers(arg); //Do we need to do anything else here?
 		
 	}
 }
