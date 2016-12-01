@@ -61,7 +61,9 @@ public class TaskEditPane extends JPanel implements Serializable {
 		categories = c;
 		add = false;
 		edit = false;
-		data = new TaskData("", "", null, null, null, null, false, "");
+		//placeholder date
+		Date date = new Date(200000000);
+		data = new TaskData("", "", null, date, date, date, false, "");
 		init();
 	}
 	
@@ -316,27 +318,26 @@ public class TaskEditPane extends JPanel implements Serializable {
 	 * @param e EventListner to add to text fields.
 	 */
 	void addFieldListener(EventListener e) {
-		
+		//wah
 	}
 	
 	/**
 	 * Fills the fields with the appropriate text from the CategoryData field.
 	 */
 	void fillFields() {
-		/*
 		//set task fields
-		taskID.setText(data.getTaskID());
-		taskTitle.setText(data.getTitle());
-		taskDetails.setText(data.getDetails());
-		taskStart.setValue(data.getStartDateTime());
-		taskDue.setValue(data.getDueDateTime());
-		taskCompleted.setValue(data.getCompletedDateTime());
+		getTaskID().setText(data.getTaskID());
+		getTaskTitle().setText(data.getTitle());
+		getTaskDetails().setText(data.getDetails());
+		getTaskStartSpinner().setValue(data.getStartDateTime().getTime());
+		getTaskDueSpinner().setValue(data.getDueDateTime().getTime());
+		getTaskCompletedSpinner().setValue(data.getCompletedDateTime().getTime());
 		
 		//grab the array of categories, then set the combobox
 		taskCat = new JComboBox<Category>();
 		for (int i = 0; i < categories.size(); i++) {
 			taskCat.addItem(categories.getCategoryAt(i));
-		}*/
+		}
 	}
 	
 	/**
@@ -362,14 +363,14 @@ public class TaskEditPane extends JPanel implements Serializable {
 	 * @param args any additional information needed about the change.
 	 */
 	public void update(Observable o, Object args) {
-		boolean isCorrectObservable = false;
+		//boolean isCorrectObservable = false;
 		try {
 			//first try to convert the observable into a taskdata object
 			TaskList td = (TaskList) o;
 			//if it works, try to check if it's in this edit pane rn
 			
 		} catch (Exception e) {
-			
+			//poo
 		}
 	}
 }
