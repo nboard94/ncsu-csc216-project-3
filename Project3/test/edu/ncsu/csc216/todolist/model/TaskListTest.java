@@ -429,12 +429,23 @@ public class TaskListTest {
 		assertEquals(t2TaskID, arrayTest[1][0]);
 	}
 
-//	/**
-//	 * Test method for updating a task
-//	 */
-//	@Test
-//	public void testUpdate() {
-//		fail("Not yet implemented");
-//	}
+	/**
+	 * Test method for updating a task
+	 */
+	@Test
+	public void testUpdate() {
+		try {
+			//test non-task update
+			test.update(null, null);
+			fail("No!");
+		} catch (Exception e) {
+			//good keep goin
+		}
+		
+		//test a task or w/e
+		test.addTask(t1Title, t1Details, t1StartTime, t1DueTime, testCat);
+		Task task = new Task(t1Title, t1Details, t1StartTime, t1DueTime, testCat, test.getTaskAt(0).getTaskID());
+		test.update(task, null);
+	}
 
 }

@@ -124,4 +124,19 @@ public class CategoryListTest {
  		assertEquals(arr[2][2], "President");
 
 	}
+	
+	@Test
+	public void testUpdate() {
+		try {
+			//test non-task update
+			cl.update(null, null);
+			fail("No!");
+		} catch (Exception e) {
+			//good keep goin
+		}
+		
+		//test a task or w/e
+		Category category = new Category("C1", "Overwatch", "A very addictive videogame");
+		cl.update(category, null);
+	}
 }

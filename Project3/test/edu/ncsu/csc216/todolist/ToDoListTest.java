@@ -192,13 +192,16 @@ public class ToDoListTest {
 		}
 	}
 
-//	/**
-//	 * Test method for updating the ToDoList
-//	 */
-//	@Test
-//	public void testUpdate() {
-//		fail("Not yet implemented");
-//		//TODO: get all of the updates to work
-//	}
+	/**
+	 * Test method for updating the ToDoList
+	 */
+	@Test
+	public void testUpdate() {
+		try {
+			test.update(null, null);
+		} catch (Exception e) {
+			fail();
+		}
+	}
 
 }
