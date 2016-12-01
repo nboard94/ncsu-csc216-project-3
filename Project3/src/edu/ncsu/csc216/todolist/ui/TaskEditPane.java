@@ -1,15 +1,11 @@
 package edu.ncsu.csc216.todolist.ui;
 
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.FlowLayout;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.EventListener;
 import java.util.Observable;
 
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -27,7 +23,7 @@ import edu.ncsu.csc216.todolist.model.TaskList;
  * Panel for editing Tasks.
  * @author Nicholas Board and Christian Byrnes
  */
-public class TaskEditPane extends Component implements Serializable {
+public class TaskEditPane extends JPanel implements Serializable {
 	
 	/** Serial version UID */
 	private static final long serialVersionUID = 5479139338455751629L;
@@ -65,6 +61,7 @@ public class TaskEditPane extends Component implements Serializable {
 		categories = c;
 		add = false;
 		edit = false;
+		data = new TaskData("", "", null, null, null, null, false, "");
 		init();
 	}
 	
@@ -94,20 +91,12 @@ public class TaskEditPane extends Component implements Serializable {
 	 * Initializes the view.
 	 */
 	private void initView() {
-		/*JPanel p = new JPanel(new FlowLayout(FlowLayout.LEADING));
+		JPanel p = new JPanel(new FlowLayout(FlowLayout.LEADING));
 		p.add(new JLabel("Task ID: ", SwingConstants.LEFT));
 		p.add(getTaskID());
+		p.add(new JLabel("Task Title: "), SwingConstants.LEFT);
+		p.add(getTaskTitle());
 		this.add(p);
-		p = new JPanel(new FlowLayout(FlowLayout.LEADING));
-		p.add(new JLabel("Task Title: ", SwingConstants.LEFT));
-		p.add(getCategoryName());
-		this.add(p);
-		p = new JPanel(new FlowLayout(FlowLayout.LEADING));
-		p.add(new JLabel("Category Description: ", SwingConstants.LEFT));
-		this.add(p);
-		p = new JPanel(new FlowLayout(FlowLayout.LEADING));
-		p.add(getCategoryDesc());
-		this.add(p);*/
 	}
 	
 	/**
@@ -115,6 +104,10 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the spinner for TaskStart.
 	 */
 	JSpinner getTaskStartSpinner() {
+		if (taskStart == null) {
+			taskStart = new JSpinner();
+			//ADD THE REST OF THE CRAP HERE
+		}
 		return this.taskStart;
 	}
 	
@@ -123,6 +116,10 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the spinner for TaskDue.
 	 */
 	JSpinner getTaskDueSpinner() {
+		if (taskDue == null) {
+			taskDue = new JSpinner();
+			//ADD THE REST OF THE CRAP HERE
+		}
 		return this.taskDue;
 	}
 	
@@ -131,6 +128,11 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the spinner for TaskCompleted.
 	 */
 	JSpinner getTaskCompletedSpinner() {
+		if (taskCompleted == null) {
+			taskCompleted = new JSpinner();
+
+			//ADD THE REST OF THE CRAP HERE
+		}
 		return this.taskCompleted;
 	}
 	
@@ -163,6 +165,10 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the text field for taskID.
 	 */
 	JTextField getTaskID() {
+		if (taskID == null) {
+			taskID = new JTextField();
+			//ADD THE REST OF THE CRAP HERE
+		}
 		return this.taskID;
 	}
 	
@@ -171,6 +177,10 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the text field for taskTitle.
 	 */
 	JTextField getTaskTitle() {
+		if (taskTitle == null) {
+			taskTitle = new JTextField();
+			//ADD THE REST OF THE CRAP HERE
+		}
 		return this.taskTitle;
 	}
 	
@@ -179,6 +189,10 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the combo box for task's categories.
 	 */
 	JComboBox<Category> getCategory() {
+		if (taskCat == null) {
+			taskCat = new JComboBox<Category>();
+			//ADD THE REST OF THE CRAP HERE
+		}
 		return taskCat;
 	}
 	
@@ -187,6 +201,11 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the test area for the taskDetauls.
 	 */
 	JTextArea getTaskDetails() {
+		if (taskDetails == null) {
+			taskDetails = new JTextArea();
+
+			//ADD THE REST OF THE CRAP HERE
+		}
 		return this.taskDetails;
 	}
 	
@@ -195,6 +214,10 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the check box for task complete.
 	 */
 	JCheckBox getComplete() {
+		if (complete == null) {
+			complete = new JCheckBox();
+			//ADD THE REST OF THE CRAP HERE
+		}
 		return this.complete;
 	}
 	
