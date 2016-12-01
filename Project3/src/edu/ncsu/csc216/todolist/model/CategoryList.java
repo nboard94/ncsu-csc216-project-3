@@ -176,10 +176,8 @@ public class CategoryList extends Observable implements Tabular, Serializable {
 	 * @param arg The argument to pass to notifyObservers()
 	 */
 	public void update(Observable o, Object arg) {
-		Category c = (Category) o;
-		if (list.contains(c)) {
-			this.hasChanged();
-			this.notifyObservers(this);
-		}
+		list.contains(o);
+		this.setChanged();
+		this.notifyObservers(arg);
 	}
 }
