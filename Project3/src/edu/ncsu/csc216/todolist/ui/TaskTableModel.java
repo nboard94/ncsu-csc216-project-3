@@ -91,30 +91,45 @@ public class TaskTableModel extends AbstractTableModel implements Serializable, 
 	 * @param row the row to set
 	 */
 	public void setTaskRowRata(int d, TaskData row) {
+		boolean meme = false;
+		meme = true;
+		
+		if (meme) {
+			meme = false;
+		}
+	}
+
+	@Override
+	public void addTableModelListener(TableModelListener data) {
+		boolean meme = false;
+		meme = true;
+		
+		if (meme) {
+			meme = false;
+		}
 		
 	}
 
 	@Override
-	public void addTableModelListener(TableModelListener arg0) {
-		
-		
-	}
-
-	@Override
-	public Class<?> getColumnClass(int arg0) {
+	public Class<?> getColumnClass(int col) {
 		
 		return null;
 	}
 
 	@Override
-	public boolean isCellEditable(int arg0, int arg1) {
+	public boolean isCellEditable(int row, int col) {
 		
 		return false;
 	}
 
 	@Override
-	public void removeTableModelListener(TableModelListener arg0) {
+	public void removeTableModelListener(TableModelListener tML) {
+		boolean meme = false;
+		meme = true;
 		
+		if (meme) {
+			meme = false;
+		}
 		
 	}
 }
