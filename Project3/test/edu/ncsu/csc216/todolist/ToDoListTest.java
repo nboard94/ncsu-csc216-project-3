@@ -213,6 +213,9 @@ public class ToDoListTest {
 		test.saveDataFile("test");
 		
 		test.saveDataFile("test.txt");
+		
+		test.setChanged(true);
+		assertTrue(test.hasChanged());
 	}
 	
 	/**
@@ -221,6 +224,9 @@ public class ToDoListTest {
 	@Test
 	public void testOpenDateFile() {
 		test.openDataFile("boingo.txt");
+		
+		test.setChanged(true);
+		assertTrue(test.hasChanged());
 	}
 
 }
