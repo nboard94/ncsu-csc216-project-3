@@ -349,7 +349,7 @@ public class TaskListTest {
 		try {
 			Task removed = test.removeTaskAt(1);
 			assertEquals(1, test.size());
-			assertEquals(t1Title, removed.getTitle());
+			assertEquals(t2Title, removed.getTitle());
 		} catch (Exception e) {
 			fail("Legal index still broke?");
 		}
