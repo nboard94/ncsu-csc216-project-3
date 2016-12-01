@@ -73,6 +73,12 @@ public class LinkedList  implements List, Serializable {
 		if (element == null) 
 			throw new NullPointerException();
 		
+		for (int i = 0; i < size(); i++) {
+			if (this.contains(element)) {
+				throw new IllegalArgumentException();
+			}
+		}
+		
 		//otherwise, we'll throw this to the insertAt method, giving it the index, the element, and front
 		this.insertAt(index, element, head);
 	}
