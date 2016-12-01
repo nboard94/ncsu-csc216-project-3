@@ -377,6 +377,7 @@ public class ToDoList extends Observable implements Serializable, Observer {
 		//grab the value, increment the numLists, then return the new list's index
 		int index = numLists;
 		numLists++;
+		setChanged();
 		return index;
 	}
 	
@@ -395,6 +396,7 @@ public class ToDoList extends Observable implements Serializable, Observer {
 			else tasks[i] = tasks[i + 1];
 		}
 		
+		setChanged();
 		numLists--;
 	}
 	
@@ -471,11 +473,8 @@ public class ToDoList extends Observable implements Serializable, Observer {
 	 * @param arg the arguments to pass up to notifyObservers()
 	 */
 	public void update(Observable o, Object arg) {
-		//no need to check observable or anything, just pass arg to observer and set changed to true
+		this.setChanged();
 		this.notifyObservers(arg);
-		
-		setChanged(); //???
-		setChanged(true);
 	}
 	
 }
