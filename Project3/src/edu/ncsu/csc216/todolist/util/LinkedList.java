@@ -66,10 +66,12 @@ public class LinkedList  implements List, Serializable {
 	public void add(int index, Object element) {
 
 		//also, if the index is greater than size throw an index out of bounds exception
-		if (index > this.size() || index < 0) throw new IndexOutOfBoundsException();
+		if (index > this.size() || index < 0) 
+			throw new IndexOutOfBoundsException();
 		
 		//check if the object is null, throw exception if it is
-		if (element == null) throw new IllegalArgumentException();
+		if (element == null) 
+			throw new IllegalArgumentException();
 		
 		//otherwise, we'll throw this to the insertAt method, giving it the index, the element, and front
 		this.insertAt(index, element, head);
