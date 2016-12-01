@@ -53,9 +53,15 @@ public class ArrayList implements List, Serializable {
      * @return true if the element is added to the list
      */
 	@Override
-	public boolean add(Object o) throws NullPointerException {
+	public boolean add(Object o) throws NullPointerException, IllegalArgumentException {
 		if (o == null) {
 			throw new NullPointerException();
+		}
+		
+		for (int i = 0; i < list.length; i++) {
+			if (o.equals(list[i])) {
+				throw new IllegalArgumentException();
+			}
 		}
 		
 		if (size() == list.length) {
