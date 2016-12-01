@@ -184,7 +184,8 @@ public class TaskList extends Observable implements Tabular, Serializable {
 		//search the list for the given title
 		for (int i = 0; i < list.size(); i++) {
 			Task current = (Task) list.get(i);
-			if (current.getTitle().equals(title)) return i;
+			if (current.getTitle().equals(title)) 
+				return i;
 		}
 		
 		//if you're out here the title isn't in the list
