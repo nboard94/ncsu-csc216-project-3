@@ -119,9 +119,12 @@ public class CategoryList extends Observable implements Tabular, Serializable {
 	 * @return The removed Category.
 	 */
 	public Category removeCategoryAt(int index) {
+		Category removed = (Category) list.remove(index);
+		
 		this.setChanged();
 		this.notifyObservers(this);
-		return (Category) list.remove(index);
+		
+		return removed;
 	}
 	
 	/**
