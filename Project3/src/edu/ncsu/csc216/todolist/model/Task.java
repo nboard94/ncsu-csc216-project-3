@@ -69,7 +69,7 @@ public class Task extends Observable implements Serializable {
 			throw new IllegalArgumentException();
 		} else {
 			title = newTitle;
-			this.hasChanged();
+			this.setChanged();
 			this.notifyObservers(this);
 		}
 	}
@@ -92,7 +92,7 @@ public class Task extends Observable implements Serializable {
 			throw new IllegalArgumentException();
 		} else {
 			details = newDetails;
-			this.hasChanged();
+			this.setChanged();
 			this.notifyObservers(this);
 		}
 	}
@@ -114,7 +114,7 @@ public class Task extends Observable implements Serializable {
 			throw new IllegalArgumentException();
 		} else {
 			startDateTime = newStartDateTime;
-			this.hasChanged();
+			this.setChanged();
 			this.notifyObservers(this);
 		}
 	}
@@ -136,7 +136,7 @@ public class Task extends Observable implements Serializable {
 			throw new IllegalArgumentException();
 		} else {
 			dueDateTime = newDueDateTime;
-			this.hasChanged();
+			this.setChanged();
 			this.notifyObservers(this);
 		}
 		
@@ -156,7 +156,7 @@ public class Task extends Observable implements Serializable {
 	 */
 	public void setCompletedDateTime(Date newCompletedDateTime) {
 		completedDateTime = newCompletedDateTime;
-		this.hasChanged();
+		this.setChanged();
 		this.notifyObservers(this);
 	}
 	
@@ -174,7 +174,7 @@ public class Task extends Observable implements Serializable {
 	 */
 	public void setCompleted(boolean newCompleted) {
 		completed = newCompleted;
-		this.hasChanged();
+		this.setChanged();
 		this.notifyObservers(this);
 	}
 	
@@ -196,7 +196,7 @@ public class Task extends Observable implements Serializable {
 			throw new IllegalArgumentException();
 		} else {
 			category = newCategory;
-			this.hasChanged();
+			this.setChanged();
 			this.notifyObservers(this);
 		}
 	}
@@ -219,7 +219,7 @@ public class Task extends Observable implements Serializable {
 			throw new IllegalArgumentException();
 		} else {
 			taskID = newTaskID;
-			this.hasChanged();
+			this.setChanged();
 			this.notifyObservers(this);
 		}
 	}

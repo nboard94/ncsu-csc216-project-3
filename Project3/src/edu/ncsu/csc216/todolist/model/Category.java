@@ -105,7 +105,7 @@ public class Category extends Observable implements Serializable {
 		} else {
 			categoryID = newCategoryID;
 			this.setChanged();
-			this.notifyObservers(newCategoryID);
+			this.notifyObservers(this);
 		}
 	}
 	
