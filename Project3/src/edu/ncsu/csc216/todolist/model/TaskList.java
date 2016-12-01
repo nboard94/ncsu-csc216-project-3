@@ -60,6 +60,8 @@ public class TaskList extends Observable implements Tabular, Serializable {
 	public void setName(String name) {
 		if (name == null || name.trim().equals("")) throw new IllegalArgumentException();
 		this.name = name;
+		this.setChanged();
+		this.notifyObservers(this);
 	}
 	
 	/**
@@ -76,6 +78,8 @@ public class TaskList extends Observable implements Tabular, Serializable {
 	 */
 	private void setTaskListID(String taskListID) {
 		this.taskListID = taskListID;
+		this.setChanged();
+		this.notifyObservers(this);
 	}
 	
 	/**
@@ -116,6 +120,8 @@ public class TaskList extends Observable implements Tabular, Serializable {
 		if (list.isEmpty()) {
 			list.add(newTask);
 			this.incNextTaskNum();
+			this.setChanged();
+			this.notifyObservers(this);
 			return true;
 		}
 			
@@ -132,6 +138,8 @@ public class TaskList extends Observable implements Tabular, Serializable {
 			if (spotIdx == list.size()) {
 				list.add(newTask);
 				this.incNextTaskNum();
+				this.setChanged();
+				this.notifyObservers(this);
 				return true;
 			}
 			
@@ -144,6 +152,8 @@ public class TaskList extends Observable implements Tabular, Serializable {
 			if (compare >= 0) {
 				list.add(spotIdx, newTask);
 				this.incNextTaskNum();
+				this.setChanged();
+				this.notifyObservers(this);
 				return true;
 			}
 			
@@ -218,6 +228,8 @@ public class TaskList extends Observable implements Tabular, Serializable {
 			
 			if (current.getTaskID().equals(taskID)) {
 				list.remove(i);
+				this.setChanged();
+				this.notifyObservers(this);
 				return true;
 			}
 		}

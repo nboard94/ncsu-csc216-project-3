@@ -47,7 +47,8 @@ public class CategoryList extends Observable implements Tabular, Serializable {
 		try {
 			list.add(new Category("C" + getNextCategoryAt(), newName, newDesc));
 			incNextCategoryNum();
-			this.notifyObservers();
+			this.setChanged();
+			this.notifyObservers(this);
 			return true;
 		} catch(IllegalArgumentException e) {
 			return false;
@@ -118,7 +119,8 @@ public class CategoryList extends Observable implements Tabular, Serializable {
 	 * @return The removed Category.
 	 */
 	public Category removeCategoryAt(int index) {
-		this.notifyObservers();
+		this.setChanged();
+		this.notifyObservers(this);
 		return (Category) list.remove(index);
 	}
 	
@@ -131,7 +133,8 @@ public class CategoryList extends Observable implements Tabular, Serializable {
 		for (int i = 0; i < list.size(); i++) {
 			if (this.getCategoryAt(i).getCategoryID().equals(id)) {
 				list.remove(i);
-				this.notifyObservers();
+				this.setChanged();
+				this.notifyObservers(this);
 				return true;
 			}
 		}
