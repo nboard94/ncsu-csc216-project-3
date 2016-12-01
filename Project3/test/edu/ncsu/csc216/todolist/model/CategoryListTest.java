@@ -63,7 +63,7 @@ public class CategoryListTest {
 		assertEquals(1, cl.indexOf("C2"));
 		assertEquals(2, cl.indexOf("C3"));
 		
-		assertEquals(0, cl.indexOf("Elephant"));
+		assertEquals(-1, cl.indexOf("Elephant"));
 	}
 	
 	/**
@@ -75,7 +75,7 @@ public class CategoryListTest {
 		assertEquals(1, cl.indexOfName("Harry Potter"));
 		assertEquals(2, cl.indexOfName("Barack Obama"));
 		
-		assertEquals(0, cl.indexOfName("Elephant"));
+		assertEquals(-1, cl.indexOfName("Elephant"));
 
 	}
 	
