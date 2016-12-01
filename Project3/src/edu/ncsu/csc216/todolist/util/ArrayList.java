@@ -58,11 +58,11 @@ public class ArrayList implements List, Serializable {
 			throw new NullPointerException();
 		}
 		
-		for (int i = 0; i < list.length; i++) {
-			if (o.equals(list[i])) {
-				throw new IllegalArgumentException();
-			}
-		}
+//		for (int i = 0; i < list.length; i++) {
+//			if (o.equals(list[i])) {
+//				throw new IllegalArgumentException();
+//			}
+//		}
 		
 		if (size() == list.length) {
 			resize();
