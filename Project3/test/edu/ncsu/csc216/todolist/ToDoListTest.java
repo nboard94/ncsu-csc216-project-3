@@ -203,5 +203,28 @@ public class ToDoListTest {
 			fail();
 		}
 	}
+	
+	/**
+	 * Test method of saveDateFile
+	 */
+	@Test
+	public void testSaveDataFile() {
+		ToDoList tdl = new ToDoList();
+		
+		CategoryList testCatList = new CategoryList();
+		testCatList.addCategory(testCatName, testCatDesc);
+		
+		tdl.saveDataFile("test.txt");
+	}
+	
+	/**
+	 * Test method of openDateFile
+	 */
+	@Test
+	public void testOpenDataFile() {
+		ToDoList tdl = new ToDoList();
+		
+		tdl.openDataFile("test.txt");
+	}
 
 }
