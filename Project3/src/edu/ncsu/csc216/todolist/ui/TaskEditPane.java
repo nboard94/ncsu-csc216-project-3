@@ -363,14 +363,6 @@ public class TaskEditPane extends JPanel implements Serializable {
 	 * @param args any additional information needed about the change.
 	 */
 	public void update(Observable o, Object args) {
-		//boolean isCorrectObservable = false;
-		try {
-			//first try to convert the observable into a taskdata object
-			TaskList td = (TaskList) o;
-			//if it works, try to check if it's in this edit pane rn
-			
-		} catch (Exception e) {
-			//poo
-		}
+		//butts
 	}
 }
