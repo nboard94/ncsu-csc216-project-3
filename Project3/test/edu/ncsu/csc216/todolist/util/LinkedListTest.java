@@ -193,11 +193,11 @@ public class LinkedListTest {
 		l1.add("Hydran");	
 		l1.add("T");
 		
-//		try {
-//			assertEquals("Hydran", l1.remove(0));
-//			assertEquals("T", l1.get(0));
-//		} catch (IndexOutOfBoundsException e) {
-//			fail();
-//		}
+		try {
+			assertEquals("Hydran", l1.remove(0));
+			assertEquals("T", l1.get(0));
+		} catch (IndexOutOfBoundsException e) {
+			fail();
+		}
 	}
 }

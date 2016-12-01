@@ -223,7 +223,14 @@ public class LinkedList  implements List, Serializable {
 		//check the index, have a hissy fit if it's illegal
 		if (index < 0 || index >= this.size()) throw new IndexOutOfBoundsException();
 		
-		//toss this bad boy to the R&R- recursive remove method
+		//base case 0 for when given index is zero
+		if (index == 0) {
+			Object o = head.value;
+			head = head.next;
+			return o;
+		}
+		
+		//otherwise toss this bad boy to the R&R- recursive remove method
 		return remove(index, head).value;
 	}
 	
@@ -235,16 +242,19 @@ public class LinkedList  implements List, Serializable {
 	 * @return the node that was removed
 	 */
 	private Node remove(int idx, Node n) {
-		//base case, index = 0
-		if (idx == 0) {
-			//grab the old node, then set it's next to the current node's next
+		
+		//base case of 1- right before the node to be removed.
+		if (idx == 1) {
 			Node oldNode = n.next;
+			n.next = oldNode.next;
 			return oldNode;
 		}
 		
-		//otherwise, lets dance down the list
-		n.next = remove(idx - 1, n.next);
-		return n;
+		//recursive if the index is greater than one
+		else {
+			return remove(idx - 1, n.next);
+		}
+		
 	}
 	
     /**
