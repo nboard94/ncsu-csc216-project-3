@@ -142,6 +142,6 @@ public class Category extends Observable implements Serializable {
 	 * @return This Category represented as a String value
 	 */
 	public String toString() {
-		return this.getCategoryID() + ", " + this.getName() + ", " + this.getDescription();
+		return this.getName();
 	}
 }
