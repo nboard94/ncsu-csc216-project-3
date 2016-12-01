@@ -2,6 +2,7 @@ package edu.ncsu.csc216.todolist.model;
 
 import java.io.Serializable;
 import java.util.Observable;
+import java.util.Observer;
 
 /**
  * The Category class represents a Category object, contains
@@ -61,6 +62,7 @@ public class Category extends Observable implements Serializable {
 			throw new IllegalArgumentException();
 		} else {
 			name = newName;
+			this.notifyObservers(name);
 		}
 	}
 	
@@ -119,6 +121,7 @@ public class Category extends Observable implements Serializable {
 	 */
 	@Override
 	public boolean equals(Object obj) {
+		
 		if (!categoryID.equals(((Category) obj).getCategoryID())) {
 			return false;
 		}
