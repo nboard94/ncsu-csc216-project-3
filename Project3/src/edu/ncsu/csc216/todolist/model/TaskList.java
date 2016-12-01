@@ -263,9 +263,9 @@ public class TaskList extends Observable implements Tabular, Serializable {
 	 * @param arg The arguments to pass on to notifyObserver()
 	 */
 	public void update(Observable o, Object arg) {
-		list.contains(o);
-		this.setChanged();
-		this.notifyObservers(arg);
-		
+		if (list.contains(o)) {
+			this.setChanged();
+			this.notifyObservers(arg);
+		}
 	}
 }
