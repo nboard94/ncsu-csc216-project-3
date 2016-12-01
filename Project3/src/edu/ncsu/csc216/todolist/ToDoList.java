@@ -387,8 +387,13 @@ public class ToDoList extends Observable implements Serializable, Observer {
 	 * @throw IndexOutOfBoundsException if the index is less than 0 or greater than/equal to size
 	 */
 	public void removeTaskList(int idx) {
+		if (tasks.length < 1) {
+			throw new IndexOutOfBoundsException();
+		}
+		
 		//check for bad boiz
-		if (idx < 0 || idx >= tasks.length) throw new IndexOutOfBoundsException();
+		if (idx < 0 || idx >= tasks.length) 
+			throw new IndexOutOfBoundsException();
 		
 		//look this for loop over is things get rocky, it's probably this that's breaking...
 		for (int i = idx; i < tasks.length; i++) {
