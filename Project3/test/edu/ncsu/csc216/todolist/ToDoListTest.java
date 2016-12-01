@@ -20,7 +20,7 @@ public class ToDoListTest {
 	private ToDoList test;
 	
 	/** The test filename to save to */
-	private String fileName;
+	//private String fileName;
 	
 	// ========================== CATEGORY ==========================
 	/** A test category name */
@@ -31,23 +31,23 @@ public class ToDoListTest {
 	// ========================== TASK ==========================
 	// the task is assigned today, and due on November 11, 2020 at 11:11 PM
 	/** The first task's title */
-	private String t1Title = "Task 1";
+	//private String t1Title = "Task 1";
 	/** The first task's details */
-	private String t1Details = "Task 1 details, blagh blah";
+	//private String t1Details = "Task 1 details, blagh blah";
 	/** The first task's start time */
-	private Date t1StartTime;
+	//private Date t1StartTime;
 	/** The first tasks's end time */
-	private Date t1DueTime;
+	//private Date t1DueTime;
 	/** The first task's year */
-	private int t1Year = 2020;
+	//private int t1Year = 2020;
 	/** The first task's month */
-	private int t1Month = 11;
+	//private int t1Month = 11;
 	/** The first task's day */
-	private int t1Day = 11;
+	//private int t1Day = 11;
 	/** The first task's hour */
-	private int t1Hour = 11;
+	//private int t1Hour = 11;
 	/** The first tasks's minute */
-	private int t1Minute = 11;
+	//private int t1Minute = 11;
 	
 	
 
