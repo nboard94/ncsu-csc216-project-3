@@ -70,8 +70,8 @@ public class LinkedList  implements List, Serializable {
 			throw new IndexOutOfBoundsException();
 		
 		//check if the object is null, throw exception if it is
-		if (element == null) 
-			throw new IllegalArgumentException();
+		//if (element == null) 
+		//	throw new IllegalArgumentException();
 		
 		//otherwise, we'll throw this to the insertAt method, giving it the index, the element, and front
 		this.insertAt(index, element, head);
