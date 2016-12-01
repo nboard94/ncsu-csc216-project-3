@@ -93,7 +93,7 @@ public class ToDoListTest {
 		
 		//attempt empty filename, should fail
 		try {
-			test.setFilename(null);
+			test.setFilename("     ");
 			fail("No null file name");
 		} catch (IllegalArgumentException e) {
 			assertEquals(fileName, test.getFilename());
