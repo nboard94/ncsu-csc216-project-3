@@ -17,7 +17,6 @@ import javax.swing.SwingConstants;
 
 import edu.ncsu.csc216.todolist.model.Category;
 import edu.ncsu.csc216.todolist.model.CategoryList;
-import edu.ncsu.csc216.todolist.model.TaskList;
 
 /**
  * Panel for editing Tasks.
