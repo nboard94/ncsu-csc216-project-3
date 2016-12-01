@@ -251,6 +251,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 */
 	void disableEdit() {
 		edit = false;
+		clearFields();
 	}
 	
 	/**
@@ -266,7 +267,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @param t new TaskData
 	 */
 	void setTaskData(TaskData t) {
-		
+		data = t;
 	}
 	
 	/**Adds the given EventListner to the txtTaskName and
@@ -281,14 +282,29 @@ public class TaskEditPane extends Component implements Serializable {
 	 * Fills the fields with the appropriate text from the CategoryData field.
 	 */
 	void fillFields() {
+//		/** Combo box for task's category */
+//		private JComboBox<Category> taskCat;
 		
+		//set task fields
+		taskID.setText(data.getTaskID());
+		taskTitle.setText(data.getTitle());
+		taskDetails.setText(data.getDetails());
+		taskStart.setValue(data.getStartDateTime());
+		taskDue.setValue(data.getDueDateTime());
+		taskCompleted.setValue(data.getCompletedDateTime());
+		
+		//grab the array of categories, then set the combobox
+		taskCat = new JComboBox<Category>();
+		for (int i = 0; i < categories.size(); i++) {
+			taskCat.addItem(categories.getCategoryAt(i));
+		}
 	}
 	
 	/**
 	 * Clears the fields by setting data to null.
 	 */
 	void clearFields() {
-		
+		data = null;
 	}
 	
 	/**
@@ -296,7 +312,7 @@ public class TaskEditPane extends Component implements Serializable {
 	 * @return the fields as a TaskData object.
 	 */
 	TaskData getFields() {
-		return null;
+		return data;
 	}
 	
 	/**
