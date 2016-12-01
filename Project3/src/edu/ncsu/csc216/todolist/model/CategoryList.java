@@ -74,7 +74,7 @@ public class CategoryList extends Observable implements Tabular, Serializable {
 			}
 		}
 		
-		return 0;
+		return -1;
 	}
 	
 	/**
