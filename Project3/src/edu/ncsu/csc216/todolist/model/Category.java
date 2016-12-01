@@ -63,7 +63,8 @@ public class Category extends Observable implements Serializable {
 			throw new IllegalArgumentException();
 		} else {
 			name = newName;
-			this.notifyObservers();
+			this.setChanged();
+			this.notifyObservers(newName);
 		}
 	}
 	
@@ -81,7 +82,8 @@ public class Category extends Observable implements Serializable {
 	 */
 	public void setDescription(String newDescription) {
 		description = newDescription;
-		this.notifyObservers();
+		this.setChanged();
+		this.notifyObservers(newDescription);
 	}
 	
 	/**
@@ -102,7 +104,8 @@ public class Category extends Observable implements Serializable {
 			throw new IllegalArgumentException();
 		} else {
 			categoryID = newCategoryID;
-			this.notifyObservers();
+			this.setChanged();
+			this.notifyObservers(newCategoryID);
 		}
 	}
 	
