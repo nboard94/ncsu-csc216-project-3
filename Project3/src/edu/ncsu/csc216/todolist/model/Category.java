@@ -104,7 +104,7 @@ public class Category extends Observable implements Serializable {
 			throw new IllegalArgumentException();
 		} else {
 			categoryID = newCategoryID;
-			this.setChanged();
+			this.setChanged(); 
 			this.notifyObservers(this);
 		}
 	}
