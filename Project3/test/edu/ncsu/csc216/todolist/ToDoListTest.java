@@ -213,6 +213,7 @@ public class ToDoListTest {
 		
 		CategoryList testCatList = new CategoryList();
 		testCatList.addCategory(testCatName, testCatDesc);
+		assertEquals(testCatName, testCatList.getCategoryAt(0).getName());
 		
 		tdl.saveDataFile("test.txt");
 	}
@@ -223,6 +224,11 @@ public class ToDoListTest {
 	@Test
 	public void testOpenDataFile() {
 		ToDoList tdl = new ToDoList();
+		
+		CategoryList testCatList = new CategoryList();
+		testCatList.addCategory(testCatName, testCatDesc);
+		assertEquals(testCatName, testCatList.getCategoryAt(0).getName());
+		
 		
 		tdl.openDataFile("test.txt");
 	}
