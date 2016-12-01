@@ -244,7 +244,7 @@ public class LinkedList  implements List, Serializable {
 		
 		//otherwise, lets dance down the list
 		n.next = remove(idx - 1, n.next);
-		return n;
+		return n.next;
 	}
 	
     /**
