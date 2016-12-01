@@ -176,17 +176,10 @@ public class CategoryList extends Observable implements Tabular, Serializable {
 	 * @param arg The argument to pass to notifyObservers()
 	 */
 	public void update(Observable o, Object arg) {
-		boolean hasCategory = false;
-		//the observable item in question should be category, so make sure it's a category
-		try {
-			Category c = (Category) o;
-			if (list.contains(c)) hasCategory = true;
-		} catch (Exception e) {
-			throw new IllegalArgumentException();
+		Category c = (Category) o;
+		if (list.contains(c)) {
+			this.hasChanged();
+			this.notifyObservers(this);
 		}
-		if (!hasCategory) throw new IllegalArgumentException();
-		
-		this.notifyObservers(arg); //Do we need to do anything else here?
-		
 	}
 }

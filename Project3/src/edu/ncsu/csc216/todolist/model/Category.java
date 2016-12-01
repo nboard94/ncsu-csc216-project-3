@@ -64,7 +64,7 @@ public class Category extends Observable implements Serializable {
 		} else {
 			name = newName;
 			this.setChanged();
-			this.notifyObservers(newName);
+			this.notifyObservers(this);
 		}
 	}
 	
@@ -83,7 +83,7 @@ public class Category extends Observable implements Serializable {
 	public void setDescription(String newDescription) {
 		description = newDescription;
 		this.setChanged();
-		this.notifyObservers(newDescription);
+		this.notifyObservers(this);
 	}
 	
 	/**
