@@ -3,6 +3,7 @@ package edu.ncsu.csc216.todolist.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Observable;
+import java.util.Observer;
 
 import edu.ncsu.csc216.todolist.util.LinkedList;
 
@@ -11,7 +12,7 @@ import edu.ncsu.csc216.todolist.util.LinkedList;
  * @author Christian Byrnes, Nick Board
  *
  */
-public class TaskList extends Observable implements Tabular, Serializable {
+public class TaskList extends Observable implements Observer, Tabular, Serializable {
 
 	/** The serial id */
 	private static final long serialVersionUID = 98734509L;
@@ -214,9 +215,11 @@ public class TaskList extends Observable implements Tabular, Serializable {
 	 * @return The Task that has been removed from this TaskList
 	 */
 	public Task removeTaskAt(int idx) {
+		Task t = (Task) list.remove(idx);
+		t.deleteObserver(this);
 		this.setChanged();
 		this.notifyObservers(this);
-		return (Task) list.remove(idx);
+		return t;
 	}
 	
 	/**
