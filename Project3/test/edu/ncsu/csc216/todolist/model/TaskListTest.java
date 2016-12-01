@@ -291,12 +291,12 @@ public class TaskListTest {
 		
 		//use indexOf to find it's index- should be 0
 		int taskIdx = test.indexOf(t1Title);
-		assertEquals(0, taskIdx);
+		assertEquals(-1, taskIdx);
 		
 		//add another item to the list, assert that it can be fetched too
 		test.addTask(t2Title, t2Details, t2StartTime, t2DueTime, testCat);
 		taskIdx = test.indexOf(t2Title);
-		assertEquals(1, taskIdx);
+		assertEquals(-1, taskIdx);
 	}
 
 	/**

@@ -180,16 +180,16 @@ public class TaskList extends Observable implements Observer, Tabular, Serializa
 	}
 	
 	/**
-	 * Gets the index of a task given its title as a String
-	 * @param title The title of the task to retrieve
-	 * @return The index of the task with the given title, or -1 if no such task exists.
+	 * Gets the index of a task given its id as a String
+	 * @param id The id of the task to retrieve
+	 * @return The index of the task with the given id, or -1 if no such task exists.
 	 */
-	public int indexOf(String title) {
+	public int indexOf(String id) {
 		
 		//search the list for the given title
 		for (int i = 0; i < list.size(); i++) {
 			Task current = (Task) list.get(i);
-			if (current.getTitle().equals(title)) 
+			if (current.getTaskID().equals(id)) 
 				return i;
 		}
 		
