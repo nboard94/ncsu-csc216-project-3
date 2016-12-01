@@ -53,7 +53,11 @@ public class ArrayList implements List, Serializable {
      * @return true if the element is added to the list
      */
 	@Override
-	public boolean add(Object o) {
+	public boolean add(Object o) throws NullPointerException {
+		if (o == null) {
+			throw new NullPointerException();
+		}
+		
 		if (size() == list.length) {
 			resize();
 		}
