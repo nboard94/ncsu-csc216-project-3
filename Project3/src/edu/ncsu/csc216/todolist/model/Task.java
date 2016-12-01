@@ -240,12 +240,19 @@ public class Task extends Observable implements Serializable {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (!taskID.equals(((Task) obj).getTaskID())) {
+		if (this == obj)
+			return true;
+		if (obj == null)
 			return false;
-		}
-		
+		if (getClass() != obj.getClass())
+			return false;
+		Task other = (Task) obj;
+		if (taskID == null) {
+			if (other.taskID != null)
+				return false;
+		} else if (!taskID.equals(other.taskID))
+			return false;
 		return true;
-				
 	}
 	
 	/**
