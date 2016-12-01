@@ -114,7 +114,7 @@ public class TaskList extends Observable implements Observer, Tabular, Serializa
 				start == null || due == null || c == null) return false;
 		
 		//if we're all clear, lets turn the given data into a task!
-		String nextID = this.getNextTaskNum() + "-T";
+		String nextID = this.taskListID + "-T" + this.getNextTaskNum();
 		Task newTask = new Task(title, description, start, due, c, nextID);
 		
 		//if this is the first task we're adding, lets just add it directly
