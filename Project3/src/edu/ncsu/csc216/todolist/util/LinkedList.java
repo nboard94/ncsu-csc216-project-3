@@ -39,7 +39,7 @@ public class LinkedList  implements List, Serializable {
 	@Override
 	public boolean add(Object o) {
 		//check if the object is null, throw exception if bad
-		//if (o == null) throw new IllegalArgumentException();
+		if (o == null) throw new NullPointerException();
 		
 		//otherwise, add this to the end of the list
 		add(this.size(), o);
@@ -70,8 +70,8 @@ public class LinkedList  implements List, Serializable {
 			throw new IndexOutOfBoundsException();
 		
 		//check if the object is null, throw exception if it is
-		//if (element == null) 
-		//	throw new IllegalArgumentException();
+		if (element == null) 
+			throw new NullPointerException();
 		
 		//otherwise, we'll throw this to the insertAt method, giving it the index, the element, and front
 		this.insertAt(index, element, head);
