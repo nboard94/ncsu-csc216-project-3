@@ -12,8 +12,12 @@ import org.junit.Test;
  */
 public class CategoryListTest {
 	
+	/** The CategoryList test object */
 	CategoryList cl;
 	
+	/**
+	 * Setting up values before the actual tests
+	 */
 	@Before
 	public void beforeTest() {
 		cl = new CategoryList();
@@ -22,11 +26,17 @@ public class CategoryListTest {
 		cl.addCategory("Barack Obama", "President");
 	}
 	
+	/**
+	 * Tests the categorylist's constructor by making sure the name was intialized the right way
+	 */
 	@Test
 	public void testCategoryList() {
 		assertEquals("Categories", cl.getName());
 	}
 	
+	/**
+	 * Tests the addCategory() method
+	 */
 	@Test
 	public void testAddCategory() {
 		assertEquals("C1", cl.getCategoryAt(0).getCategoryID());
@@ -44,6 +54,9 @@ public class CategoryListTest {
 		assertFalse(cl.addCategory(null, null));
 	}
 	
+	/**
+	 * Tests the indexOf() method
+	 */
 	@Test
 	public void testIndexOf() {
 		assertEquals(0, cl.indexOf("C1"));
@@ -53,6 +66,9 @@ public class CategoryListTest {
 		assertEquals(0, cl.indexOf("Elephant"));
 	}
 	
+	/**
+	 * Tests the indexOfName() method
+	 */
 	@Test
 	public void testIndexOfName() {
 		assertEquals(0, cl.indexOfName("Overwatch"));
@@ -63,11 +79,17 @@ public class CategoryListTest {
 
 	}
 	
+	/**
+	 * Tests the size() method
+	 */
 	@Test
 	public void testSize() {
 		assertEquals(3, cl.size());
 	}
 	
+	/**
+	 * Tests the isEmpty() method
+	 */
 	@Test
 	public void testIsEmpty() {
 		CategoryList c2 = new CategoryList();
@@ -75,6 +97,9 @@ public class CategoryListTest {
 		assertFalse(cl.isEmpty());
 	}
 	
+	/**
+	 * Tests the removeCategoryAt()
+	 */
 	@Test
 	public void testRemoveCategoryAt() {
 		cl.removeCategoryAt(1);
@@ -90,6 +115,9 @@ public class CategoryListTest {
 		assertTrue(cl.isEmpty());
 	}
 	
+	/**
+	 * Tests the removeCategory() method
+	 */
 	@Test
 	public void testRemoveCategory() {
 		cl.removeCategory("C2");
@@ -107,6 +135,9 @@ public class CategoryListTest {
 		assertFalse(cl.removeCategory("Elephant"));
 	}
 	
+	/**
+	 * Tests the get2DArray() method
+	 */
 	@Test
 	public void testGet2DArray() {
  		Object[][] arr = cl.get2DArray();
@@ -125,6 +156,9 @@ public class CategoryListTest {
 
 	}
 	
+	/**
+	 * Tests the update() method
+	 */
 	@Test
 	public void testUpdate() {
 		try {
