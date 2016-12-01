@@ -2,7 +2,6 @@ package edu.ncsu.csc216.todolist.model;
 
 import java.io.Serializable;
 import java.util.Observable;
-import java.util.Observer;
 
 /**
  * The Category class represents a Category object, contains
