@@ -18,7 +18,7 @@ public class LinkedList  implements List, Serializable {
 	 * The standard constructor for a LinkedList.
 	 */
 	public LinkedList() {
-		head = new Node(null, null);
+		head = null;
 	}
 	
     /**
@@ -39,7 +39,7 @@ public class LinkedList  implements List, Serializable {
 	@Override
 	public boolean add(Object o) {
 		//check if the object is null, throw exception if bad
-		if (o == null) throw new NullPointerException();
+		//if (o == null) throw new NullPointerException();
 		
 		//otherwise, add this to the end of the list
 		add(this.size(), o);
@@ -66,21 +66,21 @@ public class LinkedList  implements List, Serializable {
 	public void add(int index, Object element) {
 
 		//also, if the index is greater than size throw an index out of bounds exception
-		if (index > this.size() || index < 0) 
-			throw new IndexOutOfBoundsException();
 		
 		//check if the object is null, throw exception if it is
 		if (element == null) 
 			throw new NullPointerException();
 		
-		for (int i = 0; i < size(); i++) {
-			if (this.contains(element)) {
-				throw new IllegalArgumentException();
-			}
+		if (index > this.size() || index < 0) 
+			throw new IndexOutOfBoundsException();
+	
+		if (this.contains(element)) {
+			throw new IllegalArgumentException();
 		}
+	
 		
 		//otherwise, we'll throw this to the insertAt method, giving it the index, the element, and front
-		this.insertAt(index, element, head);
+		head = this.insertAt(index, element, head);
 	}
 	
 	/**
@@ -97,15 +97,16 @@ public class LinkedList  implements List, Serializable {
 		//base case, if index = 0
 		if (index == 0) {
 			//create the new node
-			Node newNode = new Node(element, node.next);
+			Node newNode = new Node(element, node);
 			//set the given node's next to this new node
-			node.next = newNode;
+			//node.next = newNode;
 			//return the new node
 			return newNode;
 		}
 		//otherwise, we'll pass it down
 		else {
-			return this.insertAt(index - 1, element, node.next);
+			node.next = this.insertAt(index - 1, element, node.next);
+			return node;
 		}
 	}
 
@@ -124,7 +125,7 @@ public class LinkedList  implements List, Serializable {
 		if (this.isEmpty()) return false;
 		
 		//else, lets roll through the list
-		Node current = head.next;
+		Node current = head;
 		
 		while (current != null) {
 			if (current.value.equals(o)) return true;
@@ -148,7 +149,7 @@ public class LinkedList  implements List, Serializable {
 		if (index < 0 || index >= this.size()) throw new IndexOutOfBoundsException();
 		
 		//goes through the list until the item is retrieved
-		Node current = head.next;
+		Node current = head;
 		
 		for (int i = 0; i < index; i++) {
 			current = current.next;
@@ -174,7 +175,7 @@ public class LinkedList  implements List, Serializable {
 		if (this.isEmpty()) return -1;
 		
 		//otherwise, we're going to use a private recursive method
-		return this.indexOf(o, head.next, 0);
+		return this.indexOf(o, head, 0);
 		
 	}
 
@@ -204,7 +205,7 @@ public class LinkedList  implements List, Serializable {
      */
 	@Override
 	public boolean isEmpty() {
-		return head.next == null;
+		return head == null;
 	}
 
     /**
@@ -238,12 +239,12 @@ public class LinkedList  implements List, Serializable {
 		if (idx == 0) {
 			//grab the old node, then set it's next to the current node's next
 			Node oldNode = n.next;
-			n.next = oldNode.next;
 			return oldNode;
 		}
 		
 		//otherwise, lets dance down the list
-		return remove(idx - 1, n.next);
+		n.next = remove(idx - 1, n.next);
+		return n;
 	}
 	
     /**
@@ -264,7 +265,7 @@ public class LinkedList  implements List, Serializable {
 	 * @return The size of the LinkedList.
 	 */
 	private int size(Node n) {
-		if (n.next == null) return 0;
+		if (n == null) return 0;
 		else return size(n.next) + 1;
 	}
 	

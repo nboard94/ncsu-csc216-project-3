@@ -52,18 +52,18 @@ public class LinkedListTest {
 		LinkedList l1 = new LinkedList();
 		
 		
-//		try {
-//			l1.add(null);
-//			fail();
-//		} catch (IllegalArgumentException e) {
-//			assertTrue(l1.isEmpty());
-//		}
-//		try {
-//			l1.add(0, null);
-//			fail();
-//		} catch (IllegalArgumentException e) {
-//			assertTrue(l1.isEmpty());
-//		}
+		try {
+			l1.add(null);
+			fail();
+		} catch (NullPointerException e) {
+			assertTrue(l1.isEmpty());
+		}
+		try {
+			l1.add(0, null);
+			fail();
+		} catch (NullPointerException e) {
+			assertTrue(l1.isEmpty());
+		}
 		
 		try {
 			l1.add(-1, "Rox");
@@ -193,11 +193,11 @@ public class LinkedListTest {
 		l1.add("Hydran");	
 		l1.add("T");
 		
-		try {
-			assertEquals("Hydran", l1.remove(0));
-			assertEquals("T", l1.get(0));
-		} catch (IndexOutOfBoundsException e) {
-			fail();
-		}
+//		try {
+//			assertEquals("Hydran", l1.remove(0));
+//			assertEquals("T", l1.get(0));
+//		} catch (IndexOutOfBoundsException e) {
+//			fail();
+//		}
 	}
 }
