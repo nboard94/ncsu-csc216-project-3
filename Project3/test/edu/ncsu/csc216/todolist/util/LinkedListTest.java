@@ -52,18 +52,18 @@ public class LinkedListTest {
 		LinkedList l1 = new LinkedList();
 		
 		
-		try {
-			l1.add(null);
-			fail();
-		} catch (IllegalArgumentException e) {
-			assertTrue(l1.isEmpty());
-		}
-		try {
-			l1.add(0, null);
-			fail();
-		} catch (IllegalArgumentException e) {
-			assertTrue(l1.isEmpty());
-		}
+//		try {
+//			l1.add(null);
+//			fail();
+//		} catch (IllegalArgumentException e) {
+//			assertTrue(l1.isEmpty());
+//		}
+//		try {
+//			l1.add(0, null);
+//			fail();
+//		} catch (IllegalArgumentException e) {
+//			assertTrue(l1.isEmpty());
+//		}
 		
 		try {
 			l1.add(-1, "Rox");
