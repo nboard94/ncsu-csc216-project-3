@@ -41,7 +41,7 @@ public class TaskList extends Observable implements Observer, Tabular, Serializa
 		setTaskListID(taskListID);
 		
 		//initialize the nextTaskNum and list
-		nextTaskNum = 1;
+		nextTaskNum = 0;
 		list = new LinkedList();
 	}
 	
