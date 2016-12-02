@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.EventListener;
 import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -22,6 +23,7 @@ import javax.swing.SpinnerDateModel;
 import javax.swing.SwingConstants;
 import javax.swing.event.DocumentListener;
 
+import edu.ncsu.csc216.todolist.ToDoList;
 import edu.ncsu.csc216.todolist.model.Category;
 import edu.ncsu.csc216.todolist.model.CategoryList;
 
@@ -29,7 +31,7 @@ import edu.ncsu.csc216.todolist.model.CategoryList;
  * Panel for editing Tasks.
  * @author Nicholas Board and Christian Byrnes
  */
-public class TaskEditPane extends JPanel implements Serializable {
+public class TaskEditPane extends JPanel implements Serializable, Observer {
 	
 	/** Serial version UID */
 	private static final long serialVersionUID = 5479139338455751629L;
@@ -201,7 +203,6 @@ public class TaskEditPane extends JPanel implements Serializable {
 		if (taskCompleted == null) {
 			taskCompleted = new JSpinner();
 
-
 			SpinnerDateModel model = new SpinnerDateModel();
 			taskCompleted.setModel(model);
 			taskCompleted.setEnabled(false);
@@ -355,11 +356,30 @@ public class TaskEditPane extends JPanel implements Serializable {
 	}
 	
 	/**
+	 * A private method used to either enable or disable all the fields
+	 * @param enable A boolean that enables the fields if true, and disables them if false
+	 */
+	private void setEnableFields(boolean enable) {
+		
+		getTaskTitle().setEnabled(enable);
+		getTaskDetails().setEnabled(enable);
+		getTaskStartSpinner().setEnabled(enable);
+		getTaskDueSpinner().setEnabled(enable);
+		getTaskCompletedSpinner().setEnabled(enable);
+		
+	}
+	
+	/**
 	 * Enables add mode and disables edit.
 	 */
 	void enableAdd() {
-		add = true;
-		disableEdit();
+		if (!isAddMode()) {
+			add = true;
+			disableEdit();
+			clearFields();	
+			this.setEnableFields(true);
+		}
+		
 	}
 	
 	/**
@@ -367,6 +387,7 @@ public class TaskEditPane extends JPanel implements Serializable {
 	 */
 	void disableAdd() {
 		add = false;
+		clearFields();
 	}
 	
 	/**
@@ -374,10 +395,13 @@ public class TaskEditPane extends JPanel implements Serializable {
 	 * @param t TaskData to populate the edit area with.
 	 */
 	void enableEdit(TaskData t) {
-		edit = true;
-		disableAdd();
-		
-		this.setTaskData(t);
+		if (!isEditMode()) {
+			edit = true;
+			disableAdd();
+			this.setTaskData(t);
+			this.fillFields();
+			this.setEnabled(true);
+		}
 	}
 	
 	/**
@@ -434,10 +458,18 @@ public class TaskEditPane extends JPanel implements Serializable {
 	}
 	
 	/**
-	 * Clears the fields by setting data to null.
+	 * Clears the fields by setting data to null and
+	 * all fillable values to blank and making them inaccessible
 	 */
 	void clearFields() {
 		data = null;
+		
+		getTaskID().setText("");
+		getTaskTitle().setText("");
+		getTaskDetails().setText("");
+		getTaskStartSpinner().setValue(new Date());
+		getTaskDueSpinner().setValue(new Date());
+		this.setEnableFields(false);
 	}
 	
 	/**
@@ -456,6 +488,9 @@ public class TaskEditPane extends JPanel implements Serializable {
 	 * @param args any additional information needed about the change.
 	 */
 	public void update(Observable o, Object args) {
-		//butts
+		
+		ToDoList todo = (ToDoList) o;
+		
+		
 	}
 }

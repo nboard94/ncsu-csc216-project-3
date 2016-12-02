@@ -38,7 +38,6 @@ public class TaskListPane extends JScrollPane implements Observer, Serializable 
 	public TaskListPane(TaskList taskList) {
 		super();
 		this.taskList = taskList;
-		
 		this.taskList.addObserver(this);
 		taskTableModel = new TaskTableModel(taskList.get2DArray());
 		initView();
