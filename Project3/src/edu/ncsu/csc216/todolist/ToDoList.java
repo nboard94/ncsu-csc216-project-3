@@ -3,7 +3,9 @@ package edu.ncsu.csc216.todolist;
 import java.io.*;
 import java.util.*;
 
+import edu.ncsu.csc216.todolist.model.Category;
 import edu.ncsu.csc216.todolist.model.CategoryList;
+import edu.ncsu.csc216.todolist.model.Task;
 import edu.ncsu.csc216.todolist.model.TaskList;
 
 /**
@@ -265,8 +267,14 @@ public class ToDoList extends Observable implements Serializable, Observer {
 	 * @param arg the arguments to pass up to notifyObservers()
 	 */
 	public void update(Observable o, Object arg) {
-		this.setChanged(true);
-		this.notifyObservers(arg);
+		if (o instanceof Category) {
+			this.setChanged(true);
+			this.notifyObservers(arg);
+		}
+		else if (o instanceof Task) {
+			this.setChanged(true);
+			this.notifyObservers(arg);
+		}
 	}
 	
 }
