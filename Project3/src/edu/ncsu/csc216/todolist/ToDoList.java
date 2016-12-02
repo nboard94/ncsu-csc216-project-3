@@ -3,9 +3,7 @@ package edu.ncsu.csc216.todolist;
 import java.io.*;
 import java.util.*;
 
-import edu.ncsu.csc216.todolist.model.Category;
 import edu.ncsu.csc216.todolist.model.CategoryList;
-import edu.ncsu.csc216.todolist.model.Task;
 import edu.ncsu.csc216.todolist.model.TaskList;
 
 /**
