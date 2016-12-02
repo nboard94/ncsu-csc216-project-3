@@ -1,22 +1,25 @@
 package edu.ncsu.csc216.todolist.ui;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
+
+import edu.ncsu.csc216.todolist.model.Category;
 
 /**
  * TaskTableModel is a wrapper for the information in TaskList that 
  * can be used by a JTable. 
  * @author Nicholas Board and Christian Byrnes
  */
-public class TaskTableModel extends AbstractTableModel implements Serializable, TableModel {
+public class TaskTableModel extends AbstractTableModel implements Serializable {
 
 	/** Serial version UID */
 	private static final long serialVersionUID = 5954551753060998701L;
 	/** Names for each of the columns in the TableModel */
-	private String[] colNames = {"ID", "Task Name", "Task Description"};
+	private String[] colNames = {"ID", "Title", "Start Date", "Due Date", "Completed Date", "Complete", "Category"};
 	/** Array of CategoryList information */
 	private Object[][] data;
 	
@@ -82,54 +85,25 @@ public class TaskTableModel extends AbstractTableModel implements Serializable, 
 	 * @return the TaskData for the given row
 	 */
 	public TaskData getTaskRowData(int row) {
-		return null;
-	}
+		return new TaskData(	(String)data[row][0], (String)data[row][1],
+								(Category)data[row][2], (Date)data[row][3],
+								(Date)data[row][4], (Date)data[row][5],
+								((Boolean)data[row][6]).booleanValue(), (String)data[row][7]);
+
+}
 	
 	/**
 	 * Sets the given row with the provided TaskData.
-	 * @param d TaskyData to set in the row
-	 * @param row the row to set
+	 * @param row TaskyData to set in the row
+	 * @param d the row to set
 	 */
-	public void setTaskRowRata(int d, TaskData row) {
-		boolean meme = false;
-		meme = true;
-		
-		if (meme) {
-			meme = false;
-		}
-	}
-
-	@Override
-	public void addTableModelListener(TableModelListener data) {
-		boolean meme = false;
-		meme = true;
-		
-		if (meme) {
-			meme = false;
-		}
-		
-	}
-
-	@Override
-	public Class<?> getColumnClass(int col) {
-		
-		return null;
-	}
-
-	@Override
-	public boolean isCellEditable(int row, int col) {
-		
-		return false;
-	}
-
-	@Override
-	public void removeTableModelListener(TableModelListener tML) {
-		boolean meme = false;
-		meme = true;
-		
-		if (meme) {
-			meme = false;
-		}
-		
+	public void setTaskRowRata(int row, TaskData d) {
+		setValueAt(d.getTaskID(), row, 0);
+		setValueAt(d.getTitle(), row, 1);
+		setValueAt(d.getStartDateTime(), row, 2);
+		setValueAt(d.getDueDateTime(), row, 3);
+		setValueAt(d.getCompletedDateTime(), row, 4);
+		//TODO set complete
+		setValueAt(d.getCategory(), row, 6);
 	}
 }
