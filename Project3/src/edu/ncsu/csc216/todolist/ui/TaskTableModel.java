@@ -3,9 +3,7 @@ package edu.ncsu.csc216.todolist.ui;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.TableModel;
 
 import edu.ncsu.csc216.todolist.model.Category;
 
