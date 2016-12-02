@@ -3,6 +3,7 @@ package edu.ncsu.csc216.todolist.ui;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Insets;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.EventListener;
@@ -19,6 +20,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.SwingConstants;
+import javax.swing.event.DocumentListener;
 
 import edu.ncsu.csc216.todolist.model.Category;
 import edu.ncsu.csc216.todolist.model.CategoryList;
@@ -287,11 +289,12 @@ public class TaskEditPane extends JPanel implements Serializable {
 
 			taskDetails.setVisible(true);
 			taskDetails.setEditable(true);
-			taskDetails.setRows(3);
-			taskDetails.setColumns(24);
+			taskDetails.setRows(2);
+			taskDetails.setColumns(40);
 			taskDetails.setBackground(Color.GREEN);
 			taskDetails.setForeground(new Color(156, 173, 0));
-			taskDetails.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
+			taskDetails.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
+			taskDetails.setMargin(new Insets(10, 10, 10, 10));
 			
 		}
 		return this.taskDetails;
@@ -405,8 +408,10 @@ public class TaskEditPane extends JPanel implements Serializable {
 	 * txtTaskDescription text fields.
 	 * @param e EventListner to add to text fields.
 	 */
-	void addFieldListener(EventListener e) {
-		//wah
+	void addFieldListener(EventListener listener) {
+		//gets listeners for all the fields
+		getTaskTitle().getDocument().addDocumentListener((DocumentListener) listener);
+		getTaskDetails().getDocument().addDocumentListener((DocumentListener) listener);
 	}
 	
 	/**
