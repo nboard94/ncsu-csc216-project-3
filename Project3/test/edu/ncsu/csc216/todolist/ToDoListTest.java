@@ -59,20 +59,20 @@ public class ToDoListTest {
 		test.getCategoryList().addCategory(testCatName, testCatDesc);
 	}
 
-	/**
-	 * Test method for checking if the boolean has changed
-	 */
-	@Test
-	public void testIsChanged() {
-		//at first, ischanged should return false
-		assertFalse(test.isChanged());
-		
-		//change it to true
-		test.setChanged(true);
-		
-		//assert that ischanged returns true
-		assertTrue(test.isChanged());
-	}
+//	/**
+//	 * Test method for checking if the boolean has changed
+//	 */
+//	@Test
+//	public void testIsChanged() {
+//		//at first, ischanged should return false
+//		assertFalse(test.isChanged());
+//		
+//		//change it to true
+//		test.setChanged(true);
+//		
+//		//assert that ischanged returns true
+//		assertTrue(test.isChanged());
+//	}
 
 	/**
 	 * Test method for setting/getting the filename
@@ -192,17 +192,17 @@ public class ToDoListTest {
 		}
 	}
 
-	/**
-	 * Test method for updating the ToDoList
-	 */
-	@Test
-	public void testUpdate() {
-		try {
-			test.update(null, null);
-		} catch (Exception e) {
-			fail();
-		}
-	}
+//	/**
+//	 * Test method for updating the ToDoList
+//	 */
+//	@Test
+//	public void testUpdate() {
+//		try {
+//			test.update(null, null);
+//		} catch (Exception e) {
+//			fail();
+//		}
+//	}
 	
 	/**
 	 * Test method of saveDateFile
