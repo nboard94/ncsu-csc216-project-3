@@ -1,11 +1,14 @@
 package edu.ncsu.csc216.todolist.ui;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.EventListener;
 import java.util.Observable;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -84,6 +87,8 @@ public class TaskEditPane extends JPanel implements Serializable {
 	 * Initializes the GUI.
 	 */
 	private void init() {
+		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		setBorder(BorderFactory.createLineBorder(Color.black));
 		initView();
 		fillFields();
 	}
@@ -110,6 +115,46 @@ public class TaskEditPane extends JPanel implements Serializable {
 		//add category dropdown
 		p.add(new JLabel("Category: ", SwingConstants.LEFT));
 		p.add(getCategory());
+		this.add(p);
+		
+		//refresh p
+		p = new JPanel(new FlowLayout(FlowLayout.LEADING));
+		
+		//add start date & time
+		p.add(new JLabel("Start Date & Time: ", SwingConstants.LEFT));
+		p.add(getTaskStartSpinner());
+		this.add(p);
+		
+		//refresh p
+		p = new JPanel(new FlowLayout(FlowLayout.LEADING));
+		
+		//add due date & time
+		p.add(new JLabel("Due Date & Time: ", SwingConstants.LEFT));
+		p.add(getTaskDueSpinner());
+		this.add(p);
+		
+		//refresh p
+		p = new JPanel(new FlowLayout(FlowLayout.LEADING));
+		
+		//add completed date & time + checkbox
+		p.add(new JLabel("Completed Date & Time: ", SwingConstants.LEFT));
+		p.add(getTaskCompletedSpinner());
+		p.add(new JLabel("Completed? ", SwingConstants.LEFT));
+		p.add(this.getComplete());
+		this.add(p);
+
+		//refresh p
+		p = new JPanel(new FlowLayout(FlowLayout.LEADING));
+		
+		//add task details label
+		p.add(new JLabel("Task Details: ", SwingConstants.LEFT));
+		this.add(p);
+		
+		//refresh p
+		p = new JPanel(new FlowLayout(FlowLayout.LEADING));
+		
+		//add task details textarea
+		p.add(this.getTaskDetails());
 		this.add(p);
 		
 	}
@@ -181,8 +226,14 @@ public class TaskEditPane extends JPanel implements Serializable {
 	 */
 	JTextField getTaskID() {
 		if (taskID == null) {
-			taskID = new JTextField();
-			//ADD THE REST OF THE CRAP HERE
+			//create taskid
+			taskID = new JTextField(8);
+			
+			//set up settings
+			taskID.setEditable(false);
+			taskID.setVisible(true);
+			taskID.setHorizontalAlignment(SwingConstants.LEFT);
+			
 		}
 		return this.taskID;
 	}
@@ -193,8 +244,10 @@ public class TaskEditPane extends JPanel implements Serializable {
 	 */
 	JTextField getTaskTitle() {
 		if (taskTitle == null) {
-			taskTitle = new JTextField();
-			//ADD THE REST OF THE CRAP HERE
+			taskTitle = new JTextField(13);
+			taskTitle.setEditable(false);
+			taskTitle.setVisible(true);
+			taskTitle.setHorizontalAlignment(SwingConstants.LEFT);
 		}
 		return this.taskTitle;
 	}
