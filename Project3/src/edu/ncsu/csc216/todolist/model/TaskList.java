@@ -181,6 +181,7 @@ public class TaskList extends Observable implements Observer, Tabular, Serializa
 		
 		if (list.isEmpty()) {
 			list.add(newTask);
+			newTask.addObserver(this);
 			this.incNextTaskNum();
 			this.setChanged();
 			this.notifyObservers(this);
@@ -190,6 +191,7 @@ public class TaskList extends Observable implements Observer, Tabular, Serializa
 			for (int i = 0; i < list.size(); i++) {
 				if (((Task) list.get(i)).compareTo(newTask) < 0) {
 					list.add(i, newTask);
+					newTask.addObserver(this);
 					this.incNextTaskNum();
 					this.setChanged();
 					this.notifyObservers(this);
