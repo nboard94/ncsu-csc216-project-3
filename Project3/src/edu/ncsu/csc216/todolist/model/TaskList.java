@@ -138,7 +138,7 @@ public class TaskList extends Observable implements Observer, Tabular, Serializa
 		while (!spotFound) {
 			
 			//if the spotIdx is equal to size, we'll be adding the task to the end of the list
-			if (spotIdx == list.size()) {
+			if (spotIdx == list.size() - 1) {
 				list.add(newTask);
 				newTask.addObserver(this);
 				this.incNextTaskNum();
@@ -153,7 +153,7 @@ public class TaskList extends Observable implements Observer, Tabular, Serializa
 			int compare = current.compareTo(newTask);
 			
 			//if compare is greater than or equal to zero, insert into list at this index,figure out if this needs to be reverse
-			if (compare >= 0) {
+			if (compare < 0) {
 				list.add(spotIdx, newTask);
 				newTask.addObserver(this);
 				this.incNextTaskNum();
@@ -186,6 +186,8 @@ public class TaskList extends Observable implements Observer, Tabular, Serializa
 	 */
 	public int indexOf(String id) {
 		
+		//maybe null check
+		//maybe switch equals
 		//search the list for the given title
 		for (int i = 0; i < list.size(); i++) {
 			Task current = (Task) list.get(i);
