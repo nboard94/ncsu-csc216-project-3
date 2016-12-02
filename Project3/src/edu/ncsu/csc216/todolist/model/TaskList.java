@@ -237,7 +237,8 @@ public class TaskList extends Observable implements Observer, Tabular, Serializa
 			Task current = (Task) list.get(i);
 			
 			if (current.getTaskID().equals(taskID)) {
-				list.remove(i);
+				Task t = (Task) list.remove(i);
+				t.deleteObserver(this);
 				this.setChanged();
 				this.notifyObservers(this);
 				return true;
