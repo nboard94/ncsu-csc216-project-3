@@ -47,6 +47,7 @@ public class ToDoList extends Observable implements Serializable, Observer {
 		
 		//construct the categorylist
 		categories = new CategoryList();
+		categories.addObserver(this);
 		
 		//initialize everythin else
 		nextTaskListNum = 1;
@@ -162,6 +163,7 @@ public class ToDoList extends Observable implements Serializable, Observer {
 		
 		//add the new task list to the list
 		tasks[numLists] = newList;
+		tasks[numLists].addObserver(this);
 		
 		//grab the value, increment the numLists, then return the new list's index
 		int index = numLists;
