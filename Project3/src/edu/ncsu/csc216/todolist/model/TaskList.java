@@ -287,7 +287,7 @@ public class TaskList extends Observable implements Observer, Tabular, Serializa
 	public void update(Observable o, Object arg) {
 		if (list.contains(o)) {
 			this.setChanged();
-			this.notifyObservers(o);
+			this.notifyObservers(arg);
 		}
 	}
 }

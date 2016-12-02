@@ -268,20 +268,20 @@ public class ToDoList extends Observable implements Serializable, Observer {
 	 * @param arg the arguments to pass up to notifyObservers()
 	 */
 	public void update(Observable o, Object arg) {
-		if (o.equals(categories)) {
-			this.setChanged(true);
-			this.notifyObservers();
-			changed = true;
-		}
-		else {
-			for (int i = 0; i < tasks.length; i++) {
-				if (o.equals(tasks[i])) {
-					this.setChanged(true);
-					this.notifyObservers();
-					changed = true;
+			if (o.equals(categories)) {
+				this.setChanged(true);
+				this.notifyObservers(arg);
+				changed = true;
+			}
+			else {
+				for (int i = 0; i < tasks.length; i++) {
+					if (o.equals(tasks[i])) {
+						this.setChanged(true);
+						this.notifyObservers(arg);
+						changed = true;
+					}
 				}
 			}
-		}
 	}
 	
 }
