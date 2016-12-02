@@ -171,6 +171,11 @@ public class TaskList extends Observable implements Observer, Tabular, Serializa
 
 	public boolean addTask(String newTitle, String newDescription, Date newStart, Date newDue, Category newCat) {
 		
+		//check for illegal values
+		if (	newTitle == null || newTitle.trim().equals("") ||
+				newDescription == null || newDescription.trim().equals("") ||
+				newStart == null || newDue == null || newCat == null) return false;
+		
 		String newID = this.taskListID + "-T" + this.getNextTaskNum();
 		Task newTask = new Task(newTitle, newDescription, newStart, newDue, newCat, newID);
 		
