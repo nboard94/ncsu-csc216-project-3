@@ -2,7 +2,9 @@ package edu.ncsu.csc216.todolist.ui;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.EventListener;
 import java.util.Observable;
@@ -16,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SpinnerDateModel;
 import javax.swing.SwingConstants;
 
 import edu.ncsu.csc216.todolist.model.Category;
@@ -166,7 +169,10 @@ public class TaskEditPane extends JPanel implements Serializable {
 	JSpinner getTaskStartSpinner() {
 		if (taskStart == null) {
 			taskStart = new JSpinner();
-			//ADD THE REST OF THE CRAP HERE
+
+			SpinnerDateModel model = new SpinnerDateModel();
+			taskStart.setModel(model);
+			taskStart.setEnabled(false);
 		}
 		return this.taskStart;
 	}
@@ -178,7 +184,10 @@ public class TaskEditPane extends JPanel implements Serializable {
 	JSpinner getTaskDueSpinner() {
 		if (taskDue == null) {
 			taskDue = new JSpinner();
-			//ADD THE REST OF THE CRAP HERE
+			
+			SpinnerDateModel model = new SpinnerDateModel();
+			taskDue.setModel(model);
+			taskDue.setEnabled(false);
 		}
 		return this.taskDue;
 	}
@@ -191,7 +200,10 @@ public class TaskEditPane extends JPanel implements Serializable {
 		if (taskCompleted == null) {
 			taskCompleted = new JSpinner();
 
-			//ADD THE REST OF THE CRAP HERE
+
+			SpinnerDateModel model = new SpinnerDateModel();
+			taskCompleted.setModel(model);
+			taskCompleted.setEnabled(false);
 		}
 		return this.taskCompleted;
 	}
@@ -259,7 +271,9 @@ public class TaskEditPane extends JPanel implements Serializable {
 	JComboBox<Category> getCategory() {
 		if (taskCat == null) {
 			taskCat = new JComboBox<Category>();
-			//ADD THE REST OF THE CRAP HERE
+			
+			taskCat.setVisible(true);
+			taskCat.setEnabled(false);
 		}
 		return taskCat;
 	}
@@ -272,7 +286,14 @@ public class TaskEditPane extends JPanel implements Serializable {
 		if (taskDetails == null) {
 			taskDetails = new JTextArea();
 
-			//ADD THE REST OF THE CRAP HERE
+			taskDetails.setVisible(true);
+			taskDetails.setEditable(true);
+			taskDetails.setRows(3);
+			taskDetails.setColumns(24);
+			taskDetails.setBackground(Color.GREEN);
+			taskDetails.setForeground(new Color(156, 173, 0));
+			taskDetails.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
+			
 		}
 		return this.taskDetails;
 	}
@@ -284,7 +305,9 @@ public class TaskEditPane extends JPanel implements Serializable {
 	JCheckBox getComplete() {
 		if (complete == null) {
 			complete = new JCheckBox();
-			//ADD THE REST OF THE CRAP HERE
+
+			complete.setEnabled(false);
+			complete.setVisible(true);
 		}
 		return this.complete;
 	}
@@ -395,9 +418,9 @@ public class TaskEditPane extends JPanel implements Serializable {
 		getTaskID().setText(data.getTaskID());
 		getTaskTitle().setText(data.getTitle());
 		getTaskDetails().setText(data.getDetails());
-		getTaskStartSpinner().setValue(data.getStartDateTime().getTime());
-		getTaskDueSpinner().setValue(data.getDueDateTime().getTime());
-		getTaskCompletedSpinner().setValue(data.getCompletedDateTime().getTime());
+		getTaskStartSpinner().setValue(data.getStartDateTime());
+		getTaskDueSpinner().setValue(data.getDueDateTime());
+		getTaskCompletedSpinner().setValue(data.getCompletedDateTime());
 		
 		//grab the array of categories, then set the combobox
 		taskCat = new JComboBox<Category>();
