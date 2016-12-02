@@ -231,7 +231,7 @@ public class LinkedList  implements List, Serializable {
 		}
 		
 		//otherwise toss this bad boy to the R&R- recursive remove method
-		return remove(index - 1, head).value;
+		return remove(index, head).value;
 	}
 	
 	/**
