@@ -1,10 +1,12 @@
 package edu.ncsu.csc216.todolist.ui;
 
-import java.awt.Component;
+import java.awt.Color;
 import java.io.Serializable;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.BorderFactory;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 
@@ -15,7 +17,7 @@ import edu.ncsu.csc216.todolist.model.TaskList;
  * Maintains a list of Tasks.
  * @author Nicholas Board and Christian Byrnes
  */
-public class TaskListPane extends Component implements Observer, Serializable {
+public class TaskListPane extends JScrollPane implements Observer, Serializable {
 
 	/** Serial version UID */
 	private static final long serialVersionUID = -2210716111020406799L;
@@ -73,7 +75,8 @@ public class TaskListPane extends Component implements Observer, Serializable {
 		
 		table.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 		table.setFillsViewportHeight(false);
-		//setViewportView(table);
+		setViewportView(table);
+		setBorder(BorderFactory.createLineBorder(Color.black));
 	} 
 	
 	/**
