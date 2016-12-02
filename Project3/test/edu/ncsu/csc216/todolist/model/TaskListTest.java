@@ -296,6 +296,8 @@ public class TaskListTest {
 		
 		//add another item to the list, assert that it can be fetched too
 		test.addTask(t2Title, t2Details, t2StartTime, t2DueTime, testCat);
+		assertEquals(t2Title, test.getTaskAt(1).getTitle());
+		
 		taskIDD = test.getTaskAt(1).getTaskID();
 		taskIdx = test.indexOf(taskIDD);
 		assertEquals(1, taskIdx);
