@@ -265,8 +265,7 @@ public class ToDoList extends Observable implements Serializable, Observer {
 	 * @param arg the arguments to pass up to notifyObservers()
 	 */
 	public void update(Observable o, Object arg) {
-		setChanged(true);
-		this.setChanged();
+		this.setChanged(true);
 		this.notifyObservers(arg);
 	}
 	

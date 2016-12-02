@@ -290,13 +290,15 @@ public class TaskListTest {
 		test.addTask(t1Title, t1Details, t1StartTime, t1DueTime, testCat);
 		
 		//use indexOf to find it's index- should be 0
-		int taskIdx = test.indexOf(t1Title);
-		assertEquals(-1, taskIdx);
+		String taskIDD = test.getTaskAt(0).getTaskID();
+		int taskIdx = test.indexOf(taskIDD);
+		assertEquals(0, taskIdx);
 		
 		//add another item to the list, assert that it can be fetched too
 		test.addTask(t2Title, t2Details, t2StartTime, t2DueTime, testCat);
-		taskIdx = test.indexOf(t2Title);
-		assertEquals(-1, taskIdx);
+		taskIDD = test.getTaskAt(1).getTaskID();
+		taskIdx = test.indexOf(taskIDD);
+		assertEquals(1, taskIdx);
 	}
 
 	/**
