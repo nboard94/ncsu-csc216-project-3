@@ -128,47 +128,73 @@ public class TaskList extends Observable implements Observer, Tabular, Serializa
 			return true;
 		}
 			
-		//the list is sorted by due date, with the soonest due date at the beginning of the list.
-		//once we find a task due date that's later than the one we've been given, we'll insert our
-		//task into the list before that one.
-		boolean spotFound = false;
-		int spotIdx = 0;
+//		//the list is sorted by due date, with the soonest due date at the beginning of the list.
+//		//once we find a task due date that's later than the one we've been given, we'll insert our
+//		//task into the list before that one.
+//		boolean spotFound = false;
+//		int spotIdx = 0;
+//		
+//		//iterate through the list until a spot is found
+//		while (!spotFound) {
+//			
+//			//if the spotIdx is equal to size, we'll be adding the task to the end of the list
+//			if (spotIdx == list.size() - 1) {
+//				list.add(newTask);
+//				newTask.addObserver(this);
+//				this.incNextTaskNum();
+//				this.setChanged();
+//				this.notifyObservers(this);
+//				return true;
+//			}
+//			
+//			//if it's not equal to size, we'll roll through the list till we're good
+//			Task current = (Task) list.get(spotIdx);
+//			//compare current and newtask
+//			int compare = current.compareTo(newTask);
+//			
+//			//if compare is greater than or equal to zero, insert into list at this index,figure out if this needs to be reverse
+//			if (compare < 0) {
+//				list.add(spotIdx, newTask);
+//				newTask.addObserver(this);
+//				this.incNextTaskNum();
+//				this.setChanged();
+//				this.notifyObservers(this);
+//				return true;
+//			}
+//			
+//			//if that compare didn't work, increment the spotIdx before restarting this loop
+//			spotIdx++;
+//		} 
 		
-		//iterate through the list until a spot is found
-		while (!spotFound) {
-			
-			//if the spotIdx is equal to size, we'll be adding the task to the end of the list
-			if (spotIdx == list.size() - 1) {
-				list.add(newTask);
-				newTask.addObserver(this);
-				this.incNextTaskNum();
-				this.setChanged();
-				this.notifyObservers(this);
-				return true;
-			}
-			
-			//if it's not equal to size, we'll roll through the list till we're good
-			Task current = (Task) list.get(spotIdx);
-			//compare current and newtask
-			int compare = current.compareTo(newTask);
-			
-			//if compare is greater than or equal to zero, insert into list at this index,figure out if this needs to be reverse
-			if (compare < 0) {
-				list.add(spotIdx, newTask);
-				newTask.addObserver(this);
-				this.incNextTaskNum();
-				this.setChanged();
-				this.notifyObservers(this);
-				return true;
-			}
-			
-			//if that compare didn't work, increment the spotIdx before restarting this loop
-			spotIdx++;
-		} 
 		
+		for (int i = 0; i < list.size(); i++) {
+	Task currentTask = (Task) list.get(i);
+	int compare = currentTask.compareTo(newTask);
+	
+	if (compare < 0) {
+		list.add(i, newTask);
+		newTask.addObserver(this);
+		this.incNextTaskNum();
+		this.setChanged();
+		this.notifyObservers(this);
+		return true;
+	}
+	else if (i == size() - 1){
+		list.add(newTask);
+		newTask.addObserver(this);
+		this.incNextTaskNum();
+		this.setChanged();
+		this.notifyObservers(this);
+		return true;
+	}
+}
+
+
 		//you shouldn't end out here, i don't think.. but just in case return false
 		return false;
 	}
+	
+
 		
 	/**
 	 * Gets the task at the given index in the list
