@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.swing.table.AbstractTableModel;
+import javax.xml.crypto.Data;
 
 import edu.ncsu.csc216.todolist.model.Category;
 
@@ -28,6 +29,8 @@ public class TaskTableModel extends AbstractTableModel implements Serializable {
 	public TaskTableModel(Object[][] data) {
 		super();
 		this.data = data;
+
+		
 	}
 	
 	/**
@@ -95,7 +98,7 @@ public class TaskTableModel extends AbstractTableModel implements Serializable {
 	 * @param row TaskyData to set in the row
 	 * @param d the row to set
 	 */
-	public void setTaskRowRata(int row, TaskData d) {
+	public void setTaskRowData(int row, TaskData d) {
 		setValueAt(d.getTaskID(), row, 0);
 		setValueAt(d.getTitle(), row, 1);
 		setValueAt(d.getStartDateTime(), row, 2);

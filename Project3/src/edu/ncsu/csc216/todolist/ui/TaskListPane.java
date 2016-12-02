@@ -28,7 +28,7 @@ public class TaskListPane extends JScrollPane implements Observer, Serializable 
 	/** Table for the tasks */
 	private JTable table;
 	/** Width of columns */
-	private int[] colWidths = {50, 250, 750};
+	private int[] colWidths = {25, 50, 50, 50, 50, 50, 25};
 	
 	
 	/**
@@ -39,7 +39,7 @@ public class TaskListPane extends JScrollPane implements Observer, Serializable 
 		super();
 		this.taskList = taskList;
 		this.taskList.addObserver(this);
-		taskTableModel = new TaskTableModel(taskList.get2DArray());
+		taskTableModel = new TaskTableModel(taskList.get2DArray());	
 		initView();
 	}
 	
@@ -52,7 +52,7 @@ public class TaskListPane extends JScrollPane implements Observer, Serializable 
 	}
 
 	/**
-	 * Returns the JTable
+	 * Returns the JTableF
 	 * @return the JTable
 	 */
 	public JTable getTable() {
@@ -70,6 +70,11 @@ public class TaskListPane extends JScrollPane implements Observer, Serializable 
 		for (int i = 0; i < colWidths.length; i++) {
 			TableColumn col = table.getColumnModel().getColumn(i);
 			col.setPreferredWidth(colWidths[i]);
+		}
+		
+		for (int i = 0; i < taskTableModel.getRowCount(); i++) {
+			TaskData currentData = taskTableModel.getTaskRowData(i);
+			((TaskTableModel) taskTableModel).setTaskRowData(i, currentData);
 		}
 		
 		table.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
