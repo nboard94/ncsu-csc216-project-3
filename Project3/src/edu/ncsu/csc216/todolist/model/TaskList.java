@@ -138,7 +138,7 @@ public class TaskList extends Observable implements Observer, Tabular, Serializa
 		while (!spotFound) {
 			
 			//if the spotIdx is equal to size, we'll be adding the task to the end of the list
-			if (spotIdx == list.size()) {
+			if (spotIdx == list.size() - 1) {
 				list.add(newTask);
 				newTask.addObserver(this);
 				this.incNextTaskNum();
