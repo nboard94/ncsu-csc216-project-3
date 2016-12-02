@@ -49,12 +49,13 @@ public class ToDoList extends Observable implements Serializable, Observer {
 		categories = new CategoryList();
 		categories.addObserver(this);
 		
-		//initialize everythin else
-		nextTaskListNum = 1;
-		changed = false;
-		
 		//add a new list to the tasklist
+		nextTaskListNum = 1;
 		this.addTaskList();
+		
+		//initialize everythin else
+
+		changed = false;
 		
 	}
 	
@@ -269,17 +270,17 @@ public class ToDoList extends Observable implements Serializable, Observer {
 	 * @param arg the arguments to pass up to notifyObservers()
 	 */
 	public void update(Observable o, Object arg) {
-		if (o instanceof CategoryList && o.equals(categories)) {
-			this.setChanged();
-			this.notifyObservers();
+		if (o.equals(categories)) {
 			changed = true;
+			this.setChanged(true);
+			this.notifyObservers(arg);
 		}
 		else {
 			for (int i = 0; i < tasks.length; i++) {
-				if (o instanceof TaskList && o.equals(tasks[i])) {
-					this.setChanged();
-					this.notifyObservers();
+				if (o.equals(tasks[i])) {
 					changed = true;
+					this.setChanged(true);
+					this.notifyObservers(arg);
 				}
 			}
 		}
