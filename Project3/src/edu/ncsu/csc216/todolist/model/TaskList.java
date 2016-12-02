@@ -98,110 +98,82 @@ public class TaskList extends Observable implements Observer, Tabular, Serializa
 		nextTaskNum++;
 	}
 	
-//	/**
-//	 * Adds a new Task to this list given the proper Task parameters.
-//	 * @param title The title of the new task
-//	 * @param description The new task's description
-//	 * @param start The start date for this task
-//	 * @param due The due date for this task
-//	 * @param c The category this task is a part of
-//	 * @return True if the task is successfully added to the TaskList
-//	 */
-//	public boolean addTask(String title, String description, Date start, Date due, Category c) {
-//		//check for illegal values
-//		if (	title == null || title.trim().equals("") ||
-//				description == null || description.trim().equals("") ||
-//				start == null || due == null || c == null) return false;
-//		
-//		//if we're all clear, lets turn the given data into a task!
-//		String nextID = this.taskListID + "-T" + this.getNextTaskNum();
-//		Task newTask = new Task(title, description, start, due, c, nextID);
-//		
-//		//if this is the first task we're adding, lets just add it directly
-//		if (list.isEmpty()) {
-//			
-//			list.add(newTask);
-//			newTask.addObserver(this);
-//			this.incNextTaskNum();
-//			this.setChanged();
-//			this.notifyObservers(this);
-//			return true;
-//		}
-//			
-//		//the list is sorted by due date, with the soonest due date at the beginning of the list.
-//		//once we find a task due date that's later than the one we've been given, we'll insert our
-//		//task into the list before that one.
-//		boolean spotFound = false;
-//		int spotIdx = 0;
-//		
-//		//iterate through the list until a spot is found
-//		while (!spotFound) {
-//			
-//			//if the spotIdx is equal to size, we'll be adding the task to the end of the list
-//			if (spotIdx == list.size() - 1) {
-//				list.add(newTask);
-//				newTask.addObserver(this);
-//				this.incNextTaskNum();
-//				this.setChanged();
-//				this.notifyObservers(this);
-//				return true;
-//			}
-//			
-//			//if it's not equal to size, we'll roll through the list till we're good
-//			Task current = (Task) list.get(spotIdx);
-//			//compare current and newtask
-//			int compare = current.compareTo(newTask);
-//			
-//			//if compare is greater than or equal to zero, insert into list at this index,figure out if this needs to be reverse
-//			if (compare < 0) {
-//				list.add(spotIdx, newTask);
-//				newTask.addObserver(this);
-//				this.incNextTaskNum();
-//				this.setChanged();
-//				this.notifyObservers(this);
-//				return true;
-//			}
-//			
-//			//if that compare didn't work, increment the spotIdx before restarting this loop
-//			spotIdx++;
-//		} 
-//		
-//		return false;
-//	}
-
-	public boolean addTask(String newTitle, String newDescription, Date newStart, Date newDue, Category newCat) {
-		
+	/**
+	 * Adds a new Task to this list given the proper Task parameters.
+	 * @param title The title of the new task
+	 * @param description The new task's description
+	 * @param start The start date for this task
+	 * @param due The due date for this task
+	 * @param c The category this task is a part of
+	 * @return True if the task is successfully added to the TaskList
+	 */
+	public boolean addTask(String title, String description, Date start, Date due, Category c) {
 		//check for illegal values
-		if (	newTitle == null || newTitle.trim().equals("") ||
-				newDescription == null || newDescription.trim().equals("") ||
-				newStart == null || newDue == null || newCat == null) return false;
+		if (	title == null || title.trim().equals("") ||
+				description == null || description.trim().equals("") ||
+				start == null || due == null || c == null) return false;
 		
-		String newID = this.taskListID + "-T" + this.getNextTaskNum();
-		Task newTask = new Task(newTitle, newDescription, newStart, newDue, newCat, newID);
+		//if we're all clear, lets turn the given data into a task!
+		String nextID = this.taskListID + "-T" + this.getNextTaskNum();
+		Task newTask = new Task(title, description, start, due, c, nextID);
 		
+		//if this is the first task we're adding, lets just add it directly
 		if (list.isEmpty()) {
+			
 			list.add(newTask);
 			newTask.addObserver(this);
 			this.incNextTaskNum();
 			this.setChanged();
 			this.notifyObservers(this);
 			return true;
-		} 
-		else {
-			for (int i = 0; i < list.size(); i++) {
-				if (((Task) list.get(i)).compareTo(newTask) < 0) {
-					list.add(i, newTask);
-					newTask.addObserver(this);
-					this.incNextTaskNum();
-					this.setChanged();
-					this.notifyObservers(this);
-					return true;
-				}
-			}
 		}
+			
+		//the list is sorted by due date, with the soonest due date at the beginning of the list.
+		//once we find a task due date that's later than the one we've been given, we'll insert our
+		//task into the list before that one.
+		boolean spotFound = false;
+		int spotIdx = 0;
 		
+		//iterate through the list until a spot is found
+		while (!spotFound) {
+			
+			//if the spotIdx is equal to size, we'll be adding the task to the end of the list
+			if (spotIdx == list.size() - 1) {
+				list.add(newTask);
+				newTask.addObserver(this);
+				this.incNextTaskNum();
+				this.setChanged();
+				this.notifyObservers(this);
+				return true;
+			}
+			
+			//if it's not equal to size, we'll roll through the list till we're good
+			Task current = (Task) list.get(spotIdx);
+			//compare current and newtask
+			int compare = current.compareTo(newTask);
+			
+			//if compare is greater than or equal to zero, insert into list at this index,figure out if this needs to be reverse
+			if (compare < 0) {
+				list.add(spotIdx, newTask);
+				newTask.addObserver(this);
+				this.incNextTaskNum();
+				this.setChanged();
+				this.notifyObservers(this);
+				return true;
+			}
+			
+			//if that compare didn't work, increment the spotIdx before restarting this loop
+			spotIdx++;
+		} 
 		return false;
-	} 
+	}
+		
+	
+
+
+		
+
+
 			
 	/**
 	 * Gets the task at the given index in the list

@@ -271,8 +271,8 @@ public class TaskListTest {
 			//TODO 			assertEquals(t1Title, grab1.getTitle());
 			//assertEquals(t2Title, grab2.getTitle());
 			
-			assertEquals(t2Title, grab1.getTitle());
-			assertEquals(t1Title, grab2.getTitle());
+			assertEquals(t1Title, grab1.getTitle());
+			assertEquals(t2Title, grab2.getTitle());
 		} catch (Exception e) {
 			fail("That should've been just fine");
 		}
@@ -302,7 +302,7 @@ public class TaskListTest {
 		//TODO 		assertEquals(t2Title, test.getTaskAt(1).getTitle());
 
 		
-		assertEquals(t1Title, test.getTaskAt(1).getTitle());
+		assertEquals(t2Title, test.getTaskAt(1).getTitle());
 		
 		taskIDD = test.getTaskAt(1).getTaskID();
 		taskIdx = test.indexOf(taskIDD);
@@ -361,7 +361,7 @@ public class TaskListTest {
 			assertEquals(1, test.size());
 
 			//TODO 			assertEquals(t2Title, removed.getTitle());
-			assertEquals(t1Title, removed.getTitle());
+			assertEquals(t2Title, removed.getTitle());
 		} catch (Exception e) {
 			fail("Legal index still broke?");
 		}
