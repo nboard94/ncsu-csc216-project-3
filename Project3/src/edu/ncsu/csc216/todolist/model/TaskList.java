@@ -154,7 +154,7 @@ public class TaskList extends Observable implements Observer, Tabular, Serializa
 			
 			//if compare is greater than or equal to zero, insert into list at this index,figure out if this needs to be reverse
 			if (compare >= 0) {
-				list.add(spotIdx + 1, newTask);
+				list.add(spotIdx, newTask);
 				newTask.addObserver(this);
 				this.incNextTaskNum();
 				this.setChanged();
