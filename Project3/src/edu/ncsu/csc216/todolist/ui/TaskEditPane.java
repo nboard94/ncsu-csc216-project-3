@@ -92,12 +92,26 @@ public class TaskEditPane extends JPanel implements Serializable {
 	 * Initializes the view.
 	 */
 	private void initView() {
+		//Create a jpanel to add the rows of the edit pane
 		JPanel p = new JPanel(new FlowLayout(FlowLayout.LEADING));
+		
+		// *** each time you add a new "row" to the editpane, reinitialize the jpanel
+		
+		//add taskid and task title
 		p.add(new JLabel("Task ID: ", SwingConstants.LEFT));
 		p.add(getTaskID());
 		p.add(new JLabel("Task Title: "), SwingConstants.LEFT);
 		p.add(getTaskTitle());
 		this.add(p);
+		
+		//refresh p
+		p = new JPanel(new FlowLayout(FlowLayout.LEADING));
+		
+		//add category dropdown
+		p.add(new JLabel("Category: ", SwingConstants.LEFT));
+		p.add(getCategory());
+		this.add(p);
+		
 	}
 	
 	/**
