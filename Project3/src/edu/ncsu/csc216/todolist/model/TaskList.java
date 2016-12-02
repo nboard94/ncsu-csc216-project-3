@@ -150,7 +150,7 @@ public class TaskList extends Observable implements Observer, Tabular, Serializa
 			//if it's not equal to size, we'll roll through the list till we're good
 			Task current = (Task) list.get(spotIdx);
 			//compare current and newtask
-			int compare = newTask.compareTo(current);
+			int compare = current.compareTo(newTask);
 			
 			//if compare is greater than or equal to zero, insert into list at this index,figure out if this needs to be reverse
 			if (compare >= 0) {

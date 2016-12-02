@@ -269,8 +269,8 @@ public class TaskListTest {
 			Task grab1 = test.getTaskAt(0);
 			Task grab2 = test.getTaskAt(1);
 			//TODO
-			assertEquals(t2Title, grab1.getTitle());
-			assertEquals(t1Title, grab2.getTitle());
+			assertEquals(t1Title, grab1.getTitle());
+			assertEquals(t2Title, grab2.getTitle());
 		} catch (Exception e) {
 			fail("That should've been just fine");
 		}
@@ -295,10 +295,9 @@ public class TaskListTest {
 		int taskIdx = test.indexOf(taskIDD);
 		assertEquals(0, taskIdx);
 		
-		//TODO
 		//add another item to the list, assert that it can be fetched too
-		test.addTask(t1Title, t2Details, t2StartTime, t2DueTime, testCat);
-		assertEquals(t1Title, test.getTaskAt(1).getTitle());
+		test.addTask(t2Title, t2Details, t2StartTime, t2DueTime, testCat);
+		assertEquals(t2Title, test.getTaskAt(1).getTitle());
 		
 		taskIDD = test.getTaskAt(1).getTaskID();
 		taskIdx = test.indexOf(taskIDD);
@@ -355,8 +354,7 @@ public class TaskListTest {
 		try {
 			Task removed = test.removeTaskAt(1);
 			assertEquals(1, test.size());
-			//TODO
-			assertEquals(t1Title, removed.getTitle());
+			assertEquals(t2Title, removed.getTitle());
 		} catch (Exception e) {
 			fail("Legal index still broke?");
 		}
