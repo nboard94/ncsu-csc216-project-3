@@ -277,6 +277,7 @@ public class TaskEditPane extends JPanel implements Serializable, Observer {
 			
 			taskCat.setVisible(true);
 			taskCat.setEnabled(true);
+			taskCat.setEditable(true);
 		}
 		return taskCat;
 	}
@@ -432,7 +433,7 @@ public class TaskEditPane extends JPanel implements Serializable, Observer {
 	
 	/**Adds the given EventListner to the txtTaskName and
 	 * txtTaskDescription text fields.
-	 * @param e EventListner to add to text fields.
+	 * @param listener EventListner to add to text fields.
 	 */
 	void addFieldListener(EventListener listener) {
 		//gets listeners for all the fields
