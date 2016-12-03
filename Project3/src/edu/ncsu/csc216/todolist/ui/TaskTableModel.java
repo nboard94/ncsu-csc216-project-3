@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.swing.table.AbstractTableModel;
-import javax.xml.crypto.Data;
-
 import edu.ncsu.csc216.todolist.model.Category;
 
 /**
@@ -104,7 +102,6 @@ public class TaskTableModel extends AbstractTableModel implements Serializable {
 		setValueAt(d.getStartDateTime(), row, 2);
 		setValueAt(d.getDueDateTime(), row, 3);
 		setValueAt(d.getCompletedDateTime(), row, 4);
-		//TODO set complete
 		setValueAt(d.getCategory(), row, 6);
 	}
 }
