@@ -23,7 +23,6 @@ import javax.swing.SpinnerDateModel;
 import javax.swing.SwingConstants;
 import javax.swing.event.DocumentListener;
 
-import edu.ncsu.csc216.todolist.ToDoList;
 import edu.ncsu.csc216.todolist.model.Category;
 import edu.ncsu.csc216.todolist.model.CategoryList;
 
@@ -67,6 +66,7 @@ public class TaskEditPane extends JPanel implements Serializable, Observer {
 	public TaskEditPane(CategoryList c) {
 		super();
 		categories = c;
+		c.addObserver(this);
 		add = false;
 		edit = false;
 		//placeholder date
@@ -97,6 +97,7 @@ public class TaskEditPane extends JPanel implements Serializable, Observer {
 		setBorder(BorderFactory.createLineBorder(Color.black));
 		initView();
 		fillFields();
+		
 	}
 	
 	/**
@@ -275,7 +276,7 @@ public class TaskEditPane extends JPanel implements Serializable, Observer {
 			taskCat = new JComboBox<Category>();
 			
 			taskCat.setVisible(true);
-			taskCat.setEnabled(false);
+			taskCat.setEnabled(true);
 		}
 		return taskCat;
 	}
@@ -289,7 +290,7 @@ public class TaskEditPane extends JPanel implements Serializable, Observer {
 			taskDetails = new JTextArea();
 
 			taskDetails.setVisible(true);
-			taskDetails.setEditable(true);
+			taskDetails.setEditable(false);
 			taskDetails.setRows(2);
 			taskDetails.setColumns(40);
 			taskDetails.setBackground(Color.GREEN);
@@ -361,11 +362,12 @@ public class TaskEditPane extends JPanel implements Serializable, Observer {
 	 */
 	private void setEnableFields(boolean enable) {
 		
-		getTaskTitle().setEnabled(enable);
-		getTaskDetails().setEnabled(enable);
+		getTaskTitle().setEditable(enable);
+		getTaskDetails().setEditable(enable);
 		getTaskStartSpinner().setEnabled(enable);
 		getTaskDueSpinner().setEnabled(enable);
 		getTaskCompletedSpinner().setEnabled(enable);
+		getCategory().setEnabled(enable);
 		
 	}
 	
@@ -376,7 +378,6 @@ public class TaskEditPane extends JPanel implements Serializable, Observer {
 		if (!isAddMode()) {
 			add = true;
 			disableEdit();
-			clearFields();	
 			this.setEnableFields(true);
 		}
 		
@@ -401,6 +402,7 @@ public class TaskEditPane extends JPanel implements Serializable, Observer {
 			this.setTaskData(t);
 			this.fillFields();
 			this.setEnabled(true);
+			//you can't do completed on this push
 		}
 	}
 	
@@ -436,6 +438,7 @@ public class TaskEditPane extends JPanel implements Serializable, Observer {
 		//gets listeners for all the fields
 		getTaskTitle().getDocument().addDocumentListener((DocumentListener) listener);
 		getTaskDetails().getDocument().addDocumentListener((DocumentListener) listener);
+		
 	}
 	
 	/**
@@ -469,6 +472,7 @@ public class TaskEditPane extends JPanel implements Serializable, Observer {
 		getTaskDetails().setText("");
 		getTaskStartSpinner().setValue(new Date());
 		getTaskDueSpinner().setValue(new Date());
+		taskCat.setEnabled(false);
 		this.setEnableFields(false);
 	}
 	
@@ -477,20 +481,34 @@ public class TaskEditPane extends JPanel implements Serializable, Observer {
 	 * @return the fields as a TaskData object.
 	 */
 	TaskData getFields() {
-		return data;
+		return new TaskData(getTaskID().getText(), getTaskTitle().getText(), (Category) getCategory().getSelectedItem(), getTaskStart(), 
+				getTaskDue(), getTaskCompleted(), getComplete().isSelected(), getTaskDetails().getText());
 	}
 	
 	/**
 	 * This method is called by the observed object, whenever the observed object
-	 * is changed.  In this case, the observed object is the TaskPane. Any changes 
-	 * to the TaskPane will lead to an update of the TaskTableModel.
+	 * is changed.  In this case, the thing that updates this is the CategoryList given-
+	 * if it's changed, the list of categories in this pane update as well
 	 * @param o the observable object
 	 * @param args any additional information needed about the change.
 	 */
 	public void update(Observable o, Object args) {
 		
-		ToDoList todo = (ToDoList) o;
-		
+		//make sure this is a categorylist before going forwards
+		if (o instanceof CategoryList) {
+			
+			//grab the categorylist, then grab the newest category
+			CategoryList newList = (CategoryList) o;
+			categories = newList;
+			
+			
+			//update the dropdown
+			taskCat.removeAllItems();
+			for (int i = 0; i < categories.size(); i++) {
+				taskCat.addItem(categories.getCategoryAt(i));
+			}
+			
+		}
 		
 	}
 }
